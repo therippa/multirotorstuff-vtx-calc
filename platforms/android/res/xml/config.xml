@@ -88,7 +88,6 @@
     <gap:splash gap:platform="android" gap:qualifier="land-xhdpi" src="res/splash/android/landscape-xhdpi.png" />
     <gap:splash gap:platform="winphone" src="res/splash/wp8/SplashScreenImage.jpg" />
     <access origin="*" />
-    <plugin name="cordova-plugin-whitelist" version="1" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />

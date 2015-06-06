@@ -1,3 +1,8 @@
 .good-channel {
     background-color: #5b8ce5;
 }
+
+td {
+    width: 33%;
+    height: 26px;
+}

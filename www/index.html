@@ -45,24 +45,13 @@
 
             <div style="text-align: center;">
 
-                <div style="text-align: center;"><label class="radio-button">Exclusion Presets:</label></div>
-                <ul class="list">
-                    <li class="list__item">
-                        AU/NZ illegal channels
-                        <label class="switch switch--list-item">
-                            <input type="checkbox" class="switch__input">
-                            <div class="switch__toggle"></div>
-                        </label>
-                    </li>
-                    <li class="list__item">
-                        Boscam E1 &amp; E8 interference
-                        <label class="switch switch--list-item">
-                            <input type="checkbox" class="switch__input">
-                            <div class="switch__toggle"></div>
-                        </label>
-                    </li>
-                </ul>
+                <div style="text-align: center;">
+                    <label class="radio-button">Apply Exclusion Presets:</label>
+                    <div style="margin-bottom: 10px;"><button style="min-width: 210px;" id="aus-btn" class="button">AU/NZ Legal Channels</button></div>
+                    <div style="margin-bottom: 10px;"><button style="min-width: 210px;"id="boscam1-btn" class="button">Boscam E1/E8 Interference</button></div>
+                    <div style="margin-bottom: 10px;"><button style="min-width: 210px;"id="reset-btn" class="button">Reset All</button></div>
 
+                </div>
                 <div id="excluded-channel-table"></div>
             </div>
         </div>

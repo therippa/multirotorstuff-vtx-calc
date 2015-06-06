@@ -121,6 +121,20 @@ jQuery(document).ready(function() {
         ["FR-B 8", 5866, {"hawkeye": [0,,,,,], "immersionrc": [,,,] }],
     ];
 
+    var vtx = vtx.slice(0).sort(sortFunction);
+    var vtx_default_enabled = [];
+
+    for (var i = 0; i < vtx.length; i++) {
+        vtx_default_enabled.push([vtx[i][0], vtx[i][1], true]);
+    }
+
+    var potential_vtx_enabled = window.localStorage.getItem("vtx_enabled");
+
+    if (potential_vtx_enabled) {
+        var vtx_enabled = JSON.parse(potential_vtx_enabled);
+    } else {
+        var vtx_enabled = vtx_default_enabled;
+    }
 
     function sortFunction(a, b) {
         if (a[1] === b[1]) {
@@ -133,10 +147,13 @@ jQuery(document).ready(function() {
 
 
     function generateVtxTable() {
-        var vtx_table = vtx.slice(0).sort(sortFunction);
+        var vtx_table = vtx.slice(0); //clone array
 
-        if (jQuery("#ignore").prop("checked")) {
-            vtx_table.pop();
+        //remove excluded
+        for (var i = 0; i < vtx_enabled.length; i++) {
+            if (!vtx_enabled[i][2]) {
+                vtx_table.splice(i, 1);
+            }
         }
 
         var max_diff = 0;
@@ -225,7 +242,7 @@ jQuery(document).ready(function() {
         var table = arrayToTable(vtx_table.slice(0), good_channels);
         jQuery("#channel-table").html(table);
 
-        var excluded_table = arrayToTable2(vtx_table.slice(0));
+        var excluded_table = arrayToTable2(vtx_enabled.slice(0));
         jQuery("#excluded-channel-table").html(excluded_table);
 
     }
@@ -322,7 +339,13 @@ jQuery(document).ready(function() {
             for (j = 0; j < 3; j = j + 1) {
                 var cellData = data[i][j];
                 if (j == 2 && i != 0) {
-                    cellData = jQuery('<label class="switch switch--list-item"><input type="checkbox" class="switch__input"><div class="switch__toggle"></div></label>');
+                    cellData = jQuery('<label class="switch switch--list-item"><input type="checkbox" data-channel="' + i + '" class="switch__input" ' + (data[i][j] ? "checked" : "") + '><div class="switch__toggle"></div></label>');
+                    cellData.find("input").tap(function() {
+                        var el = $(this);
+                        var checked = el.prop("checked") == "checked" ? true : false;
+                        var channel = el.data("channel");
+                        vtx_enabled[channel-1][2] = checked;
+                    })
                 }
                 if (i === 0 && options.th) {
                     row.append(jQuery('<th />').html(cellData));
@@ -347,6 +370,19 @@ jQuery(document).ready(function() {
 
         return table;
     };
+
+    function disableChannels(channels) {
+
+        for (var i = 0; i < channels.length; i++) {
+            vtx_enabled[channels[i]][2] = false;
+        }
+
+        window.localStorage.setItem("vtx_enabled", JSON.stringify(vtx_enabled));
+
+        var excluded_table = arrayToTable2(vtx_enabled.slice(0));
+        jQuery("#excluded-channel-table").html(excluded_table);
+
+    }
 
     function render_dip(data) {
         var ret = jQuery('<div />')
@@ -381,7 +417,27 @@ jQuery(document).ready(function() {
 
     jQuery("#back-btn").tap(function() {
         $("#main").show();
+        generateVtxTable();
         $("#settings").hide();
     });
 
+    jQuery("#aus-btn").tap(function() {
+        disableChannels([0,1,2,3,31,30,29,28]);
+    })
+
+    jQuery("#boscam1-btn").tap(function() {
+        disableChannels([31]);
+    })
+
+    jQuery("#reset-btn").tap(function() {
+        for (var i = 0; i < vtx_enabled.length; i++) {
+            vtx_enabled[i][2] = true;
+        }
+
+        window.localStorage.setItem("vtx_enabled", JSON.stringify(vtx_enabled));
+
+        var excluded_table = arrayToTable2(vtx_enabled.slice(0));
+        jQuery("#excluded-channel-table").html(excluded_table);
+
+    })
 });
