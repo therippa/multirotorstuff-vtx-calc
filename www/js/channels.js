@@ -291,7 +291,7 @@ $(document).ready(function() {
 
     generateVtxTable();
 
-    $("input[type=radio]").click(function() {
+    $(".vtx_type, .pilot_count").click(function() {
         generateVtxTable();
     });
     $("#ignore").change(function() {
