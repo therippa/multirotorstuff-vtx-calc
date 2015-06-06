@@ -1,39 +1,124 @@
 jQuery(document).ready(function() {
     "use strict";
 
+    var dip = {
+            "hawkeye" : [
+                //FR-A
+                [1,1,1,1,1],
+                [1,1,0,1,1],
+                [1,0,1,1,1],
+                [1,0,0,1,1],
+                [0,1,1,1,1],
+                [0,1,0,1,1],
+                [0,0,1,1,1],
+                [0,0,0,1,1],
+                //FR-B
+                [1,1,1,0,0],
+                [1,1,0,0,0],
+                [1,0,1,0,0],
+                [1,0,0,0,0],
+                [0,1,1,0,0],
+                [0,1,0,0,0],
+                [0,0,1,0,0],
+                [0,0,0,0,0],
+                //FR-C
+                [1,1,1,1,0],
+                [1,1,0,1,0],
+                [1,0,1,1,0],
+                [1,0,0,1,0],
+                [0,1,1,1,0],
+                [0,1,0,1,0],
+                [0,0,1,1,0],
+                [0,0,0,1,0],
+                //FR-D
+                [1,1,1,0,1],
+                [1,1,0,0,1],
+                [1,0,1,0,1],
+                [1,0,0,0,1],
+                [0,1,1,0,1],
+                [0,1,0,0,1],
+                [0,0,1,0,1],
+                [0,0,0,0,1]
+
+            ],
+            "immersionrc": [
+                //FR-A
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                //FR-B
+                [1,1,1],
+                [1,1,0],
+                [1,0,1],
+                [1,0,0],
+                [0,1,1],
+                [0,1,0],
+                [0,0,1],
+                [],
+                //FR-C
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                //FR-D
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+
+            ]
+        };
+
+
+
+
+
     var vtx = [
-        ["Boscam A 1", 5865, [1,1,1,1,1]],
-        ["Boscam A 2", 5845, [1,1,0,1,1]],
-        ["Boscam A 3", 5825, [1,0,1,1,1]],
-        ["Boscam A 4", 5805,[1,0,0,1,1]],
-        ["Boscam A 5", 5785,[0,1,1,1,1]],
-        ["Boscam A 6", 5765,[0,1,0,1,1]],
-        ["Boscam A 7", 5745,[0,0,1,1,1]],
-        ["Boscam A 8", 5725,[0,0,0,1,1]],
-        ["Airwave 1", 5740,[1,1,1,0,0]],
-        ["Airwave 2", 5760,[1,1,0,0,0]],
-        ["Airwave 3", 5780,[1,0,1,0,0]],
-        ["Airwave 4", 5800,[1,0,0,0,0]],
-        ["Airwave 5", 5820,[0,1,1,0,0]],
-        ["Airwave 6", 5840,[0,1,0,0,0]],
-        ["Airwave 7", 5860,[0,0,1,0,0]],
-        ["Airwave 8", 5880,[0,0,0,0,0]],
-        ["Boscam E 1", 5705,[1,1,1,1,0]],
-        ["Boscam E 2", 5685,[1,1,0,1,0]],
-        ["Boscam E 3", 5665,[1,0,1,1,0]],
-        ["Boscam E 4", 5645,[1,0,0,1,0]],
-        ["Boscam E 5", 5885,[0,1,1,1,0]],
-        ["Boscam E 6", 5905,[0,1,0,1,0]],
-        ["Boscam E 7", 5925,[0,0,1,1,0]],
-        ["Boscam E 8", 5945,[0,0,0,1,0]],
-        ["Boscam B 1", 5733,[1,1,1,0,1]],
-        ["Boscam B 2", 5752,[1,1,0,0,1]],
-        ["Boscam B 3", 5771,[1,0,1,0,1]],
-        ["Boscam B 4", 5790,[1,0,0,0,1]],
-        ["Boscam B 5", 5809,[0,1,1,0,1]],
-        ["Boscam B 6", 5828,[0,1,0,0,1]],
-        ["Boscam B 7", 5847,[0,0,1,0,1]],
-        ["Boscam B 8", 5866,[0,0,0,0,1]]
+        ["Boscam A 1", 5865, {"hawkeye": [1,,,,1,1], "immersionrc": [,,,]}],
+        ["Boscam A 2", 5845, {"hawkeye": [1,,,,1,1], "immersionrc": [,,,] }],
+        ["Boscam A 3", 5825, {"hawkeye": [1,,,,1,1], "immersionrc": [,,,] }],
+        ["Boscam A 4", 5805, {"hawkeye": [1,,,,1,1], "immersionrc": [,,,] }],
+        ["Boscam A 5", 5785, {"hawkeye": [0,,,,1,1], "immersionrc": [,,,] }],
+        ["Boscam A 6", 5765, {"hawkeye": [0,,,,1,1], "immersionrc": [,,,] }],
+        ["Boscam A 7", 5745, {"hawkeye": [0,,,,1,1], "immersionrc": [,,,] }],
+        ["Boscam A 8", 5725, {"hawkeye": [0,,,,1,1], "immersionrc": [,,,] }],
+        ["Airwave 1", 5740, {"hawkeye": [1,,,,0,0], "immersionrc": [,,,] }],
+        ["Airwave 2", 5760, {"hawkeye": [1,,,,0,0], "immersionrc": [,,,] }],
+        ["Airwave 3", 5780, {"hawkeye": [1,,,,0,0], "immersionrc": [,,,] }],
+        ["Airwave 4", 5800, {"hawkeye": [1,,,,0,0], "immersionrc": [,,,] }],
+        ["Airwave 5", 5820, {"hawkeye": [0,,,,0,0], "immersionrc": [,,,] }],
+        ["Airwave 6", 5840, {"hawkeye": [0,,,,0,0], "immersionrc": [,,,] }],
+        ["Airwave 7", 5860, {"hawkeye": [0,,,,0,0], "immersionrc": [,,,] }],
+        ["Airwave 8", 5880, {"hawkeye": [0,,,,0,0], "immersionrc": [,,,] }],
+        ["Boscam E 1", 5705, {"hawkeye": [1,,,,,], "immersionrc": [,,,] }],
+        ["Boscam E 2", 5685, {"hawkeye": [1,,,,,], "immersionrc": [,,,] }],
+        ["Boscam E 3", 5665, {"hawkeye": [1,,,,,], "immersionrc": [,,,] }],
+        ["Boscam E 4", 5645, {"hawkeye": [1,,,,,], "immersionrc": [,,,] }],
+        ["Boscam E 5", 5885, {"hawkeye": [0,,,,,], "immersionrc": [,,,] }],
+        ["Boscam E 6", 5905, {"hawkeye": [0,,,,,], "immersionrc": [,,,] }],
+        ["Boscam E 7", 5925, {"hawkeye": [0,,,,,], "immersionrc": [,,,] }],
+        ["Boscam E 8", 5945, {"hawkeye": [0,,,,,], "immersionrc": [,,,] }],
+        ["Boscam B 1", 5733, {"hawkeye": [1,,,,,], "immersionrc": [,,,] }],
+        ["Boscam B 2", 5752, {"hawkeye": [1,,,,,], "immersionrc": [,,,] }],
+        ["Boscam B 3", 5771, {"hawkeye": [1,,,,,], "immersionrc": [,,,] }],
+        ["Boscam B 4", 5790, {"hawkeye": [1,,,,,], "immersionrc": [,,,] }],
+        ["Boscam B 5", 5809, {"hawkeye": [0,,,,,], "immersionrc": [,,,] }],
+        ["Boscam B 6", 5828, {"hawkeye": [0,,,,,], "immersionrc": [,,,] }],
+        ["Boscam B 7", 5847, {"hawkeye": [0,,,,,], "immersionrc": [,,,] }],
+        ["Boscam B 8", 5866, {"hawkeye": [0,,,,,], "immersionrc": [,,,] }],
     ];
 
 
@@ -164,6 +249,8 @@ jQuery(document).ready(function() {
         table.css("width", "100%");
         table.attr(options.attrs);
 
+        var vtx_type = jQuery("input[name=vtx_type]:checked").val();
+
         // loop through all the rows, we will deal with tfoot and thead later
         for (i = 0; i < data.length; i++) {
             row = jQuery('<tr />');
@@ -174,7 +261,7 @@ jQuery(document).ready(function() {
             for (j = 0; j < 3; j = j + 1) {
                 var cellData = data[i][j];
                 if (j == 2 && i != 0) {
-                    cellData = dip(cellData);
+                    cellData = render_dip(dip[vtx_type][i-1]);
                 }
                 if (i === 0 && options.th) {
                     row.append(jQuery('<th />').html(cellData));
@@ -201,8 +288,9 @@ jQuery(document).ready(function() {
         return table;
     };
 
-    function dip(data) {
+    function render_dip(data) {
         var ret = jQuery('<div />')
+        if (data.length == 0) return ret;
         ret.append("<sup style='top:-12px; padding-right: 2px;'>on</sup>");
         for (var i = 0; i < data.length; i++) {
             var dip_switch = jQuery("<img />");
