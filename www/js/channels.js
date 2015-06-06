@@ -1,127 +1,7 @@
-jQuery(document).ready(function() {
+$(document).ready(function() {
     "use strict";
 
-    var dip = {
-            "hawkeye" : [
-                //FR-A
-                [1,1,1,1,1],
-                [1,1,0,1,1],
-                [1,0,1,1,1],
-                [1,0,0,1,1],
-                [0,1,1,1,1],
-                [0,1,0,1,1],
-                [0,0,1,1,1],
-                [0,0,0,1,1],
-                //FR-B
-                [1,1,1,0,0],
-                [1,1,0,0,0],
-                [1,0,1,0,0],
-                [1,0,0,0,0],
-                [0,1,1,0,0],
-                [0,1,0,0,0],
-                [0,0,1,0,0],
-                [0,0,0,0,0],
-                //FR-C
-                [1,1,1,1,0],
-                [1,1,0,1,0],
-                [1,0,1,1,0],
-                [1,0,0,1,0],
-                [0,1,1,1,0],
-                [0,1,0,1,0],
-                [0,0,1,1,0],
-                [0,0,0,1,0],
-                //FR-D
-                [1,1,1,0,1],
-                [1,1,0,0,1],
-                [1,0,1,0,1],
-                [1,0,0,0,1],
-                [0,1,1,0,1],
-                [0,1,0,0,1],
-                [0,0,1,0,1],
-                [0,0,0,0,1]
 
-            ],
-            "immersionrc": [
-                //FR-A
-                [],
-                [],
-                [],
-                [],
-                [],
-                [],
-                [],
-                [],
-                //FR-B
-                [1,1,1],
-                [1,1,0],
-                [1,0,1],
-                [1,0,0],
-                [0,1,1],
-                [0,1,0],
-                [0,0,1],
-                [],
-                //FR-C
-                [],
-                [],
-                [],
-                [],
-                [],
-                [],
-                [],
-                [],
-                //FR-D
-                [],
-                [],
-                [],
-                [],
-                [],
-                [],
-                [],
-                []
-
-            ]
-        };
-
-
-
-
-
-    var vtx = [
-        ["FR-A 1", 5865, {"hawkeye": [1,,,,1,1], "immersionrc": [,,,]}],
-        ["FR-A 2", 5845, {"hawkeye": [1,,,,1,1], "immersionrc": [,,,] }],
-        ["FR-A 3", 5825, {"hawkeye": [1,,,,1,1], "immersionrc": [,,,] }],
-        ["FR-A 4", 5805, {"hawkeye": [1,,,,1,1], "immersionrc": [,,,] }],
-        ["FR-A 5", 5785, {"hawkeye": [0,,,,1,1], "immersionrc": [,,,] }],
-        ["FR-A 6", 5765, {"hawkeye": [0,,,,1,1], "immersionrc": [,,,] }],
-        ["FR-A 7", 5745, {"hawkeye": [0,,,,1,1], "immersionrc": [,,,] }],
-        ["FR-A 8", 5725, {"hawkeye": [0,,,,1,1], "immersionrc": [,,,] }],
-        ["ImmrRC 1", 5740, {"hawkeye": [1,,,,0,0], "immersionrc": [,,,] }],
-        ["ImmrRC 2", 5760, {"hawkeye": [1,,,,0,0], "immersionrc": [,,,] }],
-        ["ImmrRC 3", 5780, {"hawkeye": [1,,,,0,0], "immersionrc": [,,,] }],
-        ["ImmrRC 4", 5800, {"hawkeye": [1,,,,0,0], "immersionrc": [,,,] }],
-        ["ImmrRC 5", 5820, {"hawkeye": [0,,,,0,0], "immersionrc": [,,,] }],
-        ["ImmrRC 6", 5840, {"hawkeye": [0,,,,0,0], "immersionrc": [,,,] }],
-        ["ImmrRC 7", 5860, {"hawkeye": [0,,,,0,0], "immersionrc": [,,,] }],
-        ["ImmrRC 8", 5880, {"hawkeye": [0,,,,0,0], "immersionrc": [,,,] }],
-        ["FR-E 1", 5705, {"hawkeye": [1,,,,,], "immersionrc": [,,,] }],
-        ["FR-E 2", 5685, {"hawkeye": [1,,,,,], "immersionrc": [,,,] }],
-        ["FR-E 3", 5665, {"hawkeye": [1,,,,,], "immersionrc": [,,,] }],
-        ["FR-E 4", 5645, {"hawkeye": [1,,,,,], "immersionrc": [,,,] }],
-        ["FR-E 5", 5885, {"hawkeye": [0,,,,,], "immersionrc": [,,,] }],
-        ["FR-E 6", 5905, {"hawkeye": [0,,,,,], "immersionrc": [,,,] }],
-        ["FR-E 7", 5925, {"hawkeye": [0,,,,,], "immersionrc": [,,,] }],
-        ["FR-E 8", 5945, {"hawkeye": [0,,,,,], "immersionrc": [,,,] }],
-        ["FR-B 1", 5733, {"hawkeye": [1,,,,,], "immersionrc": [,,,] }],
-        ["FR-B 2", 5752, {"hawkeye": [1,,,,,], "immersionrc": [,,,] }],
-        ["FR-B 3", 5771, {"hawkeye": [1,,,,,], "immersionrc": [,,,] }],
-        ["FR-B 4", 5790, {"hawkeye": [1,,,,,], "immersionrc": [,,,] }],
-        ["FR-B 5", 5809, {"hawkeye": [0,,,,,], "immersionrc": [,,,] }],
-        ["FR-B 6", 5828, {"hawkeye": [0,,,,,], "immersionrc": [,,,] }],
-        ["FR-B 7", 5847, {"hawkeye": [0,,,,,], "immersionrc": [,,,] }],
-        ["FR-B 8", 5866, {"hawkeye": [0,,,,,], "immersionrc": [,,,] }],
-    ];
-
-    var vtx = vtx.slice(0).sort(sortFunction);
     var vtx_default_enabled = [];
 
     for (var i = 0; i < vtx.length; i++) {
@@ -150,9 +30,11 @@ jQuery(document).ready(function() {
         var vtx_table = vtx.slice(0); //clone array
 
         //remove excluded
+        var offset = 0;
         for (var i = 0; i < vtx_enabled.length; i++) {
             if (!vtx_enabled[i][2]) {
-                vtx_table.splice(i, 1);
+                vtx_table.splice((i - offset), 1);
+                offset += 1;
             }
         }
 
@@ -219,10 +101,10 @@ jQuery(document).ready(function() {
         }
 
         // determine best frequencies
-        var pilots = jQuery("input[name=segment-a]:checked").val();
+        var pilots = $("input[name=segment-a]:checked").val();
 
         function algorithm(n, arr) {
-            var freq_array = jQuery.map(arr, function(n){
+            var freq_array = $.map(arr, function(n){
                 return n[1];
             });
 
@@ -240,16 +122,16 @@ jQuery(document).ready(function() {
         var good_channels = algorithm(pilots, vtx_table);
 
         var table = arrayToTable(vtx_table.slice(0), good_channels);
-        jQuery("#channel-table").html(table);
+        $("#channel-table").html(table);
 
         var excluded_table = arrayToTable2(vtx_enabled.slice(0));
-        jQuery("#excluded-channel-table").html(excluded_table);
+        $("#excluded-channel-table").html(excluded_table);
 
     }
 
     var arrayToTable = function (data, good_channels, options) {
         data.unshift(["Channel", "Freq", "DIP"]);
-        var table = jQuery('<table />'),
+        var table = $('<table />'),
             thead,
             tfoot,
             rows = [],
@@ -263,17 +145,17 @@ jQuery(document).ready(function() {
                 attrs: {} // attributes for the table element, can be used to
             };
 
-        options = jQuery.extend(defaults, options);
+        options = $.extend(defaults, options);
 
         table.addClass("pure-table");
         table.css("width", "100%");
         table.attr(options.attrs);
 
-        var vtx_type = jQuery("input[name=vtx_type]:checked").val();
+        var vtx_type = $("input[name=vtx_type]:checked").val();
 
         // loop through all the rows, we will deal with tfoot and thead later
         for (i = 0; i < data.length; i++) {
-            row = jQuery('<tr />');
+            row = $('<tr />');
             var className = ""
             if (good_channels.indexOf(data[i][1]) >= 0) {
                 className = "good-channel"
@@ -281,12 +163,12 @@ jQuery(document).ready(function() {
             for (j = 0; j < 3; j = j + 1) {
                 var cellData = data[i][j];
                 if (j == 2 && i != 0) {
-                    cellData = render_dip(dip[vtx_type][i-1]);
+                    cellData = render_dip(cellData[vtx_type]);
                 }
                 if (i === 0 && options.th) {
-                    row.append(jQuery('<th />').html(cellData));
+                    row.append($('<th />').html(cellData));
                 } else {
-                    row.append(jQuery('<td />').html(cellData));
+                    row.append($('<td />').html(cellData));
                 }
                 row.addClass(className);
             }
@@ -296,7 +178,7 @@ jQuery(document).ready(function() {
         // if we want a thead use shift to get it
         if (options.thead) {
             thead = rows.shift();
-            thead = jQuery('<thead />').append(thead);
+            thead = $('<thead />').append(thead);
             table.append(thead);
         }
 
@@ -310,7 +192,7 @@ jQuery(document).ready(function() {
 
     var arrayToTable2 = function (data, good_channels, options) {
         data.unshift(["Channel", "Freq", "Enabled"]);
-        var table = jQuery('<table />'),
+        var table = $('<table />'),
             thead,
             tfoot,
             rows = [],
@@ -324,22 +206,22 @@ jQuery(document).ready(function() {
                 attrs: {} // attributes for the table element, can be used to
             };
 
-        options = jQuery.extend(defaults, options);
+        options = $.extend(defaults, options);
 
         table.addClass("pure-table");
         table.css("width", "100%");
         table.attr(options.attrs);
 
-        var vtx_type = jQuery("input[name=vtx_type]:checked").val();
+        var vtx_type = $("input[name=vtx_type]:checked").val();
 
         // loop through all the rows, we will deal with tfoot and thead later
         for (i = 0; i < data.length; i++) {
-            row = jQuery('<tr />');
+            row = $('<tr />');
 
             for (j = 0; j < 3; j = j + 1) {
                 var cellData = data[i][j];
                 if (j == 2 && i != 0) {
-                    cellData = jQuery('<label class="switch switch--list-item"><input type="checkbox" data-channel="' + i + '" class="switch__input" ' + (data[i][j] ? "checked" : "") + '><div class="switch__toggle"></div></label>');
+                    cellData = $('<label class="switch switch--list-item"><input type="checkbox" data-channel="' + i + '" class="switch__input" ' + (data[i][j] ? "checked" : "") + '><div class="switch__toggle"></div></label>');
                     cellData.find("input").tap(function() {
                         var el = $(this);
                         var checked = el.prop("checked") == "checked" ? true : false;
@@ -348,9 +230,9 @@ jQuery(document).ready(function() {
                     })
                 }
                 if (i === 0 && options.th) {
-                    row.append(jQuery('<th />').html(cellData));
+                    row.append($('<th />').html(cellData));
                 } else {
-                    row.append(jQuery('<td />').html(cellData));
+                    row.append($('<td />').html(cellData));
                 }
             }
             rows.push(row);
@@ -359,7 +241,7 @@ jQuery(document).ready(function() {
         // if we want a thead use shift to get it
         if (options.thead) {
             thead = rows.shift();
-            thead = jQuery('<thead />').append(thead);
+            thead = $('<thead />').append(thead);
             table.append(thead);
         }
 
@@ -380,56 +262,62 @@ jQuery(document).ready(function() {
         window.localStorage.setItem("vtx_enabled", JSON.stringify(vtx_enabled));
 
         var excluded_table = arrayToTable2(vtx_enabled.slice(0));
-        jQuery("#excluded-channel-table").html(excluded_table);
+        $("#excluded-channel-table").html(excluded_table);
 
     }
 
     function render_dip(data) {
-        var ret = jQuery('<div />')
+        var ret = $("<div />");
+        var channel_bottom = $("<div />");
+        channel_bottom.css({"margin-left": "15px", "margin-top": "-7px"});
         if (data.length == 0) return ret;
         ret.append("<sup style='top:-12px; padding-right: 2px;'>on</sup>");
         for (var i = 0; i < data.length; i++) {
-            var dip_switch = jQuery("<img />");
+            var dip_switch = $("<img />");
             if (data[i]) {
                 dip_switch.attr("src", "img/on.gif");
             } else {
                 dip_switch.attr("src", "img/off.gif");
             }
             ret.append(dip_switch);
-
+            var channel_div = $("<div />");
+            channel_div.css({"font-size": "75%", "display": "inline-block", "width": "10px", "text-align": "center"});
+            channel_div.html(i);
+            channel_bottom.append(channel_div);
         }
+        ret.append(channel_bottom);
         return ret;
     }
 
     generateVtxTable();
 
-    jQuery("input[type=radio]").click(function() {
+    $("input[type=radio]").click(function() {
         generateVtxTable();
     });
-    jQuery("#ignore").change(function() {
+    $("#ignore").change(function() {
         generateVtxTable();
     });
 
-    jQuery("#settings-btn").tap(function() {
+    $("#settings-btn").tap(function() {
         $("#main").hide();
         $("#settings").show();
     });
 
-    jQuery("#back-btn").tap(function() {
+    $("#back-btn").tap(function() {
         $("#main").show();
         generateVtxTable();
         $("#settings").hide();
     });
 
-    jQuery("#aus-btn").tap(function() {
+    $("#aus-btn").tap(function() {
         disableChannels([0,1,2,3,31,30,29,28]);
     })
 
-    jQuery("#boscam1-btn").tap(function() {
+    $("#boscam1-btn").tap(function() {
         disableChannels([31]);
     })
 
-    jQuery("#reset-btn").tap(function() {
+    $("#reset-btn").tap(function() {
         for (var i = 0; i < vtx_enabled.length; i++) {
             vtx_enabled[i][2] = true;
         }
@@ -437,7 +325,7 @@ jQuery(document).ready(function() {
         window.localStorage.setItem("vtx_enabled", JSON.stringify(vtx_enabled));
 
         var excluded_table = arrayToTable2(vtx_enabled.slice(0));
-        jQuery("#excluded-channel-table").html(excluded_table);
+        $("#excluded-channel-table").html(excluded_table);
 
     })
 });
