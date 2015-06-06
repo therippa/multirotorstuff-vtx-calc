@@ -87,38 +87,38 @@ jQuery(document).ready(function() {
 
 
     var vtx = [
-        ["Boscam A 1", 5865, {"hawkeye": [1,,,,1,1], "immersionrc": [,,,]}],
-        ["Boscam A 2", 5845, {"hawkeye": [1,,,,1,1], "immersionrc": [,,,] }],
-        ["Boscam A 3", 5825, {"hawkeye": [1,,,,1,1], "immersionrc": [,,,] }],
-        ["Boscam A 4", 5805, {"hawkeye": [1,,,,1,1], "immersionrc": [,,,] }],
-        ["Boscam A 5", 5785, {"hawkeye": [0,,,,1,1], "immersionrc": [,,,] }],
-        ["Boscam A 6", 5765, {"hawkeye": [0,,,,1,1], "immersionrc": [,,,] }],
-        ["Boscam A 7", 5745, {"hawkeye": [0,,,,1,1], "immersionrc": [,,,] }],
-        ["Boscam A 8", 5725, {"hawkeye": [0,,,,1,1], "immersionrc": [,,,] }],
-        ["Airwave 1", 5740, {"hawkeye": [1,,,,0,0], "immersionrc": [,,,] }],
-        ["Airwave 2", 5760, {"hawkeye": [1,,,,0,0], "immersionrc": [,,,] }],
-        ["Airwave 3", 5780, {"hawkeye": [1,,,,0,0], "immersionrc": [,,,] }],
-        ["Airwave 4", 5800, {"hawkeye": [1,,,,0,0], "immersionrc": [,,,] }],
-        ["Airwave 5", 5820, {"hawkeye": [0,,,,0,0], "immersionrc": [,,,] }],
-        ["Airwave 6", 5840, {"hawkeye": [0,,,,0,0], "immersionrc": [,,,] }],
-        ["Airwave 7", 5860, {"hawkeye": [0,,,,0,0], "immersionrc": [,,,] }],
-        ["Airwave 8", 5880, {"hawkeye": [0,,,,0,0], "immersionrc": [,,,] }],
-        ["Boscam E 1", 5705, {"hawkeye": [1,,,,,], "immersionrc": [,,,] }],
-        ["Boscam E 2", 5685, {"hawkeye": [1,,,,,], "immersionrc": [,,,] }],
-        ["Boscam E 3", 5665, {"hawkeye": [1,,,,,], "immersionrc": [,,,] }],
-        ["Boscam E 4", 5645, {"hawkeye": [1,,,,,], "immersionrc": [,,,] }],
-        ["Boscam E 5", 5885, {"hawkeye": [0,,,,,], "immersionrc": [,,,] }],
-        ["Boscam E 6", 5905, {"hawkeye": [0,,,,,], "immersionrc": [,,,] }],
-        ["Boscam E 7", 5925, {"hawkeye": [0,,,,,], "immersionrc": [,,,] }],
-        ["Boscam E 8", 5945, {"hawkeye": [0,,,,,], "immersionrc": [,,,] }],
-        ["Boscam B 1", 5733, {"hawkeye": [1,,,,,], "immersionrc": [,,,] }],
-        ["Boscam B 2", 5752, {"hawkeye": [1,,,,,], "immersionrc": [,,,] }],
-        ["Boscam B 3", 5771, {"hawkeye": [1,,,,,], "immersionrc": [,,,] }],
-        ["Boscam B 4", 5790, {"hawkeye": [1,,,,,], "immersionrc": [,,,] }],
-        ["Boscam B 5", 5809, {"hawkeye": [0,,,,,], "immersionrc": [,,,] }],
-        ["Boscam B 6", 5828, {"hawkeye": [0,,,,,], "immersionrc": [,,,] }],
-        ["Boscam B 7", 5847, {"hawkeye": [0,,,,,], "immersionrc": [,,,] }],
-        ["Boscam B 8", 5866, {"hawkeye": [0,,,,,], "immersionrc": [,,,] }],
+        ["FR-A 1", 5865, {"hawkeye": [1,,,,1,1], "immersionrc": [,,,]}],
+        ["FR-A 2", 5845, {"hawkeye": [1,,,,1,1], "immersionrc": [,,,] }],
+        ["FR-A 3", 5825, {"hawkeye": [1,,,,1,1], "immersionrc": [,,,] }],
+        ["FR-A 4", 5805, {"hawkeye": [1,,,,1,1], "immersionrc": [,,,] }],
+        ["FR-A 5", 5785, {"hawkeye": [0,,,,1,1], "immersionrc": [,,,] }],
+        ["FR-A 6", 5765, {"hawkeye": [0,,,,1,1], "immersionrc": [,,,] }],
+        ["FR-A 7", 5745, {"hawkeye": [0,,,,1,1], "immersionrc": [,,,] }],
+        ["FR-A 8", 5725, {"hawkeye": [0,,,,1,1], "immersionrc": [,,,] }],
+        ["ImmrRC 1", 5740, {"hawkeye": [1,,,,0,0], "immersionrc": [,,,] }],
+        ["ImmrRC 2", 5760, {"hawkeye": [1,,,,0,0], "immersionrc": [,,,] }],
+        ["ImmrRC 3", 5780, {"hawkeye": [1,,,,0,0], "immersionrc": [,,,] }],
+        ["ImmrRC 4", 5800, {"hawkeye": [1,,,,0,0], "immersionrc": [,,,] }],
+        ["ImmrRC 5", 5820, {"hawkeye": [0,,,,0,0], "immersionrc": [,,,] }],
+        ["ImmrRC 6", 5840, {"hawkeye": [0,,,,0,0], "immersionrc": [,,,] }],
+        ["ImmrRC 7", 5860, {"hawkeye": [0,,,,0,0], "immersionrc": [,,,] }],
+        ["ImmrRC 8", 5880, {"hawkeye": [0,,,,0,0], "immersionrc": [,,,] }],
+        ["FR-E 1", 5705, {"hawkeye": [1,,,,,], "immersionrc": [,,,] }],
+        ["FR-E 2", 5685, {"hawkeye": [1,,,,,], "immersionrc": [,,,] }],
+        ["FR-E 3", 5665, {"hawkeye": [1,,,,,], "immersionrc": [,,,] }],
+        ["FR-E 4", 5645, {"hawkeye": [1,,,,,], "immersionrc": [,,,] }],
+        ["FR-E 5", 5885, {"hawkeye": [0,,,,,], "immersionrc": [,,,] }],
+        ["FR-E 6", 5905, {"hawkeye": [0,,,,,], "immersionrc": [,,,] }],
+        ["FR-E 7", 5925, {"hawkeye": [0,,,,,], "immersionrc": [,,,] }],
+        ["FR-E 8", 5945, {"hawkeye": [0,,,,,], "immersionrc": [,,,] }],
+        ["FR-B 1", 5733, {"hawkeye": [1,,,,,], "immersionrc": [,,,] }],
+        ["FR-B 2", 5752, {"hawkeye": [1,,,,,], "immersionrc": [,,,] }],
+        ["FR-B 3", 5771, {"hawkeye": [1,,,,,], "immersionrc": [,,,] }],
+        ["FR-B 4", 5790, {"hawkeye": [1,,,,,], "immersionrc": [,,,] }],
+        ["FR-B 5", 5809, {"hawkeye": [0,,,,,], "immersionrc": [,,,] }],
+        ["FR-B 6", 5828, {"hawkeye": [0,,,,,], "immersionrc": [,,,] }],
+        ["FR-B 7", 5847, {"hawkeye": [0,,,,,], "immersionrc": [,,,] }],
+        ["FR-B 8", 5866, {"hawkeye": [0,,,,,], "immersionrc": [,,,] }],
     ];
 
 
@@ -222,13 +222,16 @@ jQuery(document).ready(function() {
 
         var good_channels = algorithm(pilots, vtx_table);
 
-        var table = arrayToTable(vtx_table, good_channels);
+        var table = arrayToTable(vtx_table.slice(0), good_channels);
         jQuery("#channel-table").html(table);
+
+        var excluded_table = arrayToTable2(vtx_table.slice(0));
+        jQuery("#excluded-channel-table").html(excluded_table);
 
     }
 
     var arrayToTable = function (data, good_channels, options) {
-        data.unshift(["Channel", "Frequency", "DIP", "Prev Mhz Diff", "Next Mhz Diff"]);
+        data.unshift(["Channel", "Freq", "DIP"]);
         var table = jQuery('<table />'),
             thead,
             tfoot,
@@ -288,6 +291,63 @@ jQuery(document).ready(function() {
         return table;
     };
 
+    var arrayToTable2 = function (data, good_channels, options) {
+        data.unshift(["Channel", "Freq", "Enabled"]);
+        var table = jQuery('<table />'),
+            thead,
+            tfoot,
+            rows = [],
+            row,
+            i,
+            j,
+            defaults = {
+                th: true, // should we use th elemenst for the first row
+                thead: false, //should we incldue a thead element with the first row
+                tfoot: false, // should we include a tfoot element with the last row
+                attrs: {} // attributes for the table element, can be used to
+            };
+
+        options = jQuery.extend(defaults, options);
+
+        table.addClass("pure-table");
+        table.css("width", "100%");
+        table.attr(options.attrs);
+
+        var vtx_type = jQuery("input[name=vtx_type]:checked").val();
+
+        // loop through all the rows, we will deal with tfoot and thead later
+        for (i = 0; i < data.length; i++) {
+            row = jQuery('<tr />');
+
+            for (j = 0; j < 3; j = j + 1) {
+                var cellData = data[i][j];
+                if (j == 2 && i != 0) {
+                    cellData = jQuery('<label class="switch switch--list-item"><input type="checkbox" class="switch__input"><div class="switch__toggle"></div></label>');
+                }
+                if (i === 0 && options.th) {
+                    row.append(jQuery('<th />').html(cellData));
+                } else {
+                    row.append(jQuery('<td />').html(cellData));
+                }
+            }
+            rows.push(row);
+        }
+
+        // if we want a thead use shift to get it
+        if (options.thead) {
+            thead = rows.shift();
+            thead = jQuery('<thead />').append(thead);
+            table.append(thead);
+        }
+
+        // add all the rows
+        for (i = 0; i < rows.length; i = i + 1) {
+            table.append(rows[i]);
+        }
+
+        return table;
+    };
+
     function render_dip(data) {
         var ret = jQuery('<div />')
         if (data.length == 0) return ret;
@@ -313,4 +373,15 @@ jQuery(document).ready(function() {
     jQuery("#ignore").change(function() {
         generateVtxTable();
     });
+
+    jQuery("#settings-btn").tap(function() {
+        $("#main").hide();
+        $("#settings").show();
+    });
+
+    jQuery("#back-btn").tap(function() {
+        $("#main").show();
+        $("#settings").hide();
+    });
+
 });
