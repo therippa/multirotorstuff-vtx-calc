@@ -19,6 +19,20 @@
                         {
                             "xml": "<preference name=\"StatusBarStyle\" value=\"lightcontent\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"InAppBrowser\"><param name=\"ios-package\" value=\"CDVInAppBrowser\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            },
+            "framework": {
+                "parents": {
+                    "CoreGraphics.framework": [
+                        {
+                            "xml": false,
+                            "count": 1
                         }
                     ]
                 }
@@ -28,6 +42,9 @@
     "installed_plugins": {
         "org.apache.cordova.statusbar": {
             "PACKAGE_NAME": "com.multirotorstuff.vtx_calc2"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.multirotorstuff.vtx-calc2"
         }
     },
     "dependent_plugins": {}
