@@ -1,0 +1,14 @@
+2015-06-19 09:31:37.159 VTX Calculator[6680:646583] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/pno/Library/Developer/CoreSimulator/Devices/61FF54EE-3A89-4A40-BCC3-8E04EE4B072A/data/Containers/Data/Application/AB54E38A-6B24-4CB2-B1E5-C111AD3871AE/Library/Cookies/Cookies.binarycookies
+2015-06-19 09:31:37.500 VTX Calculator[6680:646583] Apache Cordova native platform version 3.7.0 is starting.
+2015-06-19 09:31:37.500 VTX Calculator[6680:646583] Multi-tasking -> Device: YES, App: YES
+2015-06-19 09:31:37.517 VTX Calculator[6680:646583] Unlimited access to network resources
+2015-06-19 09:31:37.527 VTX Calculator[6680:646583] 
+
+Started backup to iCloud! Please be careful.
+Your application might be rejected by Apple if you store too much data.
+For more information please read "iOS Data Storage Guidelines" at:
+https://developer.apple.com/icloud/documentation/data-storage/
+To disable web storage backup to iCloud, set the BackupWebStorage preference to "local" in the Cordova config.xml file
+
+2015-06-19 09:31:38.450 VTX Calculator[6680:646583] Resetting plugins due to page load.
+2015-06-19 09:31:38.853 VTX Calculator[6680:646583] Finished load of: file:///Users/pno/Library/Developer/CoreSimulator/Devices/61FF54EE-3A89-4A40-BCC3-8E04EE4B072A/data/Containers/Bundle/Application/48DFC492-08FA-4CE4-B01F-398961968738/VTX%20Calculator.app/www/index.html
