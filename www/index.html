@@ -31,49 +31,107 @@
         <link rel="stylesheet" type="text/css" href="css/channels.css" />
         <title>VTX Calculator</title>
     </head>
-    <body>
-        <div style="padding: 10px;">
-            <div style="text-align: center;"><a href="#" onClick="window.open('http://www.multirotorstuff.com', '_system');"><img src="img/logo.svg" style="width: 100%; max-width: 500px;"></a></div>
+    <div>
+
+      <div style="margin: 10px;">
+          <div style="text-align: center;"><a href="#" onClick="window.open('http://www.multirotorstuff.com', '_system');"><img src="img/logo.svg" style="width: 100%; max-width: 500px;"></a></div>
         </div>
+
+        <div id="settings" style="display: none;">
+            <div style="text-align: center;">
+                <button id="back-btn" class="button">Back</button>
+            </div>
+
+            <div style="text-align: center;">
+
+                <div style="text-align: center;">
+                    <label class="radio-button">Apply Exclusion Presets:</label>
+                    <div style="margin-bottom: 10px;"><button style="min-width: 230px;" id="aus-btn" class="button">AU/NZ Legal Channels</button></div>
+                    <div style="margin-bottom: 10px;"><button style="min-width: 230px;"id="boscam1-btn" class="button">Boscam E1/E8 Interference</button></div>
+                    <div style="margin-bottom: 10px;"><button style="min-width: 230px;"id="reset-btn" class="button">Reset All</button></div>
+
+                </div>
+                <div id="excluded-channel-table"></div>
+            </div>
+        </div>
+
+        <div id="main">
+            <div style="text-align: center;">
+                <button id="settings-btn" class="button">Settings</button>
+            </div>
+
             <div>
                 <div style="text-align: center;"><label class="radio-button">Number of Pilots:</label></div>
-                <div class="button-bar" style="width:280px;margin:0 auto 30px auto;">
+                <div class="button-bar" style="width:280px;margin:0 auto 5px auto;">
                     <div class="button-bar__item">
-                        <input type="radio" name="segment-a" value="2" checked>
+                        <input type="radio" name="segment-a" class="pilot_count" value="2" checked>
                         <button class="button-bar__button">2</button>
                     </div>
                     <div class="button-bar__item">
-                        <input type="radio" name="segment-a" value="3">
+                        <input type="radio" name="segment-a" class="pilot_count" value="3">
                         <button class="button-bar__button">3</button>
                     </div>
                     <div class="button-bar__item">
-                        <input type="radio" name="segment-a" value="4">
+                        <input type="radio" name="segment-a" class="pilot_count" value="4">
                         <button class="button-bar__button">4</button>
                     </div>
                     <div class="button-bar__item">
-                        <input type="radio" name="segment-a" value="5">
+                        <input type="radio" name="segment-a" class="pilot_count" value="5">
                         <button class="button-bar__button">5</button>
                     </div>
                     <div class="button-bar__item">
-                        <input type="radio" name="segment-a" value="6">
+                        <input type="radio" name="segment-a" class="pilot_count" value="6">
                         <button class="button-bar__button">6</button>
                     </div>
                     <div class="button-bar__item">
-                        <input type="radio" name="segment-a" value="7">
+                        <input type="radio" name="segment-a" class="pilot_count" value="7">
                         <button class="button-bar__button">7</button>
+                    </div>
+                    <div class="button-bar__item">
+                        <input type="radio" name="segment-a" class="pilot_count" value="8">
+                        <button class="button-bar__button">8</button>
                     </div>
 
                 </div>
             </div>
 
-            <div id="channel-table"></div>
+            <div>
+                <div style="text-align: center;"><label class="radio-button">Transmitter DIP:</label></div>
+                <div class="button-bar" style="width:280px;margin:0 auto 30px auto;">
+                    <div class="button-bar__item">
+                        <input type="radio" name="vtx_type" class="vtx_type" value="hawkeye" checked>
+                        <button class="button-bar__button">Hawkeye</button>
+                    </div>
+                    <div class="button-bar__item">
+                        <input type="radio" name="vtx_type" class="vtx_type" value="immersionrc">
+                        <button class="button-bar__button">ImmersionRC</button>
+                    </div>
+
+                </div>
+            </div>
+
+                <div id="channel-table"></div>
+            </div>
         </div>
+
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="js/jquery.tap.min.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/vtx.js"></script>
         <script type="text/javascript" src="js/channels.js"></script>
         <script type="text/javascript">
             app.initialize();
+        </script>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-63683038-3', 'auto');
+            ga('send', 'pageview');
+
         </script>
     </body>
 </html>

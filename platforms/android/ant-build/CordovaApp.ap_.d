@@ -76,6 +76,8 @@
 /Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/js/channels.js \
 /Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/js/index.js \
 /Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/js/jquery-1.11.3.min.js \
+/Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/js/jquery.tap.min.js \
+/Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/js/vtx.js \
 /Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/spec/helper.js \
 /Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/spec/index.js \
 /Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/spec/lib \

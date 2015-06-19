@@ -1,41 +1,20 @@
-jQuery(document).ready(function() {
+$(document).ready(function() {
     "use strict";
 
-    var vtx = [
-        ["Boscam A 1", 5865, [1,1,1,1,1]],
-        ["Boscam A 2", 5845, [1,1,0,1,1]],
-        ["Boscam A 3", 5825, [1,0,1,1,1]],
-        ["Boscam A 4", 5805,[1,0,0,1,1]],
-        ["Boscam A 5", 5785,[0,1,1,1,1]],
-        ["Boscam A 6", 5765,[0,1,0,1,1]],
-        ["Boscam A 7", 5745,[0,0,1,1,1]],
-        ["Boscam A 8", 5725,[0,0,0,1,1]],
-        ["Airwave 1", 5740,[1,1,1,0,0]],
-        ["Airwave 2", 5760,[1,1,0,0,0]],
-        ["Airwave 3", 5780,[1,0,1,0,0]],
-        ["Airwave 4", 5800,[1,0,0,0,0]],
-        ["Airwave 5", 5820,[0,1,1,0,0]],
-        ["Airwave 6", 5840,[0,1,0,0,0]],
-        ["Airwave 7", 5860,[0,0,1,0,0]],
-        ["Airwave 8", 5880,[0,0,0,0,0]],
-        ["Boscam E 1", 5705,[1,1,1,1,0]],
-        ["Boscam E 2", 5685,[1,1,0,1,0]],
-        ["Boscam E 3", 5665,[1,0,1,1,0]],
-        ["Boscam E 4", 5645,[1,0,0,1,0]],
-        ["Boscam E 5", 5885,[0,1,1,1,0]],
-        ["Boscam E 6", 5905,[0,1,0,1,0]],
-        ["Boscam E 7", 5925,[0,0,1,1,0]],
-        ["Boscam E 8", 5945,[0,0,0,1,0]],
-        ["Boscam B 1", 5733,[1,1,1,0,1]],
-        ["Boscam B 2", 5752,[1,1,0,0,1]],
-        ["Boscam B 3", 5771,[1,0,1,0,1]],
-        ["Boscam B 4", 5790,[1,0,0,0,1]],
-        ["Boscam B 5", 5809,[0,1,1,0,1]],
-        ["Boscam B 6", 5828,[0,1,0,0,1]],
-        ["Boscam B 7", 5847,[0,0,1,0,1]],
-        ["Boscam B 8", 5866,[0,0,0,0,1]]
-    ];
 
+    var vtx_default_enabled = [];
+
+    for (var i = 0; i < vtx.length; i++) {
+        vtx_default_enabled.push([vtx[i][0], vtx[i][1], true]);
+    }
+
+    var potential_vtx_enabled = window.localStorage.getItem("vtx_enabled");
+
+    if (potential_vtx_enabled) {
+        var vtx_enabled = JSON.parse(potential_vtx_enabled);
+    } else {
+        var vtx_enabled = vtx_default_enabled;
+    }
 
     function sortFunction(a, b) {
         if (a[1] === b[1]) {
@@ -48,10 +27,15 @@ jQuery(document).ready(function() {
 
 
     function generateVtxTable() {
-        var vtx_table = vtx.slice(0).sort(sortFunction);
+        var vtx_table = vtx.slice(0); //clone array
 
-        if (jQuery("#ignore").prop("checked")) {
-            vtx_table.pop();
+        //remove excluded
+        var offset = 0;
+        for (var i = 0; i < vtx_enabled.length; i++) {
+            if (!vtx_enabled[i][2]) {
+                vtx_table.splice((i - offset), 1);
+                offset += 1;
+            }
         }
 
         var max_diff = 0;
@@ -117,10 +101,10 @@ jQuery(document).ready(function() {
         }
 
         // determine best frequencies
-        var pilots = jQuery("input[name=segment-a]:checked").val();
+        var pilots = $("input[name=segment-a]:checked").val();
 
         function algorithm(n, arr) {
-            var freq_array = jQuery.map(arr, function(n){
+            var freq_array = $.map(arr, function(n){
                 return n[1];
             });
 
@@ -137,18 +121,17 @@ jQuery(document).ready(function() {
 
         var good_channels = algorithm(pilots, vtx_table);
 
-        var table = arrayToTable(vtx_table, good_channels);
-        jQuery("#channel-table").html(table);
+        var table = arrayToTable(vtx_table.slice(0), good_channels);
+        $("#channel-table").html(table);
+
+        var excluded_table = arrayToExcludedTable(vtx_enabled.slice(0));
+        $("#excluded-channel-table").html(excluded_table);
 
     }
 
     var arrayToTable = function (data, good_channels, options) {
-        if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i) || (navigator.userAgent.match(/iPad/i)))) {
-          data.unshift(["Channel", "Freq", "DIP", "Prev Mhz Diff", "Next Mhz Diff"]);
-        } else {
-          data.unshift(["Channel", "Frequency", "DIP", "Prev Mhz Diff", "Next Mhz Diff"]);
-        }
-        var table = jQuery('<table />'),
+        data.unshift(["Channel", "Freq", "DIP"]);
+        var table = $('<table />'),
             thead,
             tfoot,
             rows = [],
@@ -162,15 +145,17 @@ jQuery(document).ready(function() {
                 attrs: {} // attributes for the table element, can be used to
             };
 
-        options = jQuery.extend(defaults, options);
+        options = $.extend(defaults, options);
 
         table.addClass("pure-table");
         table.css("width", "100%");
         table.attr(options.attrs);
 
+        var vtx_type = $("input[name=vtx_type]:checked").val();
+
         // loop through all the rows, we will deal with tfoot and thead later
         for (i = 0; i < data.length; i++) {
-            row = jQuery('<tr />');
+            row = $('<tr />');
             var className = ""
             if (good_channels.indexOf(data[i][1]) >= 0) {
                 className = "good-channel"
@@ -178,12 +163,12 @@ jQuery(document).ready(function() {
             for (j = 0; j < 3; j = j + 1) {
                 var cellData = data[i][j];
                 if (j == 2 && i != 0) {
-                    cellData = dip(cellData);
+                    cellData = render_dip(cellData[vtx_type]);
                 }
                 if (i === 0 && options.th) {
-                    row.append(jQuery('<th />').html(cellData));
+                    row.append($('<th />').html(cellData));
                 } else {
-                    row.append(jQuery('<td />').html(cellData));
+                    row.append($('<td />').html(cellData));
                 }
                 row.addClass(className);
             }
@@ -193,7 +178,7 @@ jQuery(document).ready(function() {
         // if we want a thead use shift to get it
         if (options.thead) {
             thead = rows.shift();
-            thead = jQuery('<thead />').append(thead);
+            thead = $('<thead />').append(thead);
             table.append(thead);
         }
 
@@ -205,28 +190,142 @@ jQuery(document).ready(function() {
         return table;
     };
 
-    function dip(data) {
-        var ret = jQuery('<div />')
+    var arrayToExcludedTable = function (data, good_channels, options) {
+        data.unshift(["Channel", "Freq", "Enabled"]);
+        var table = $('<table />'),
+            thead,
+            tfoot,
+            rows = [],
+            row,
+            i,
+            j,
+            defaults = {
+                th: true, // should we use th elemenst for the first row
+                thead: false, //should we incldue a thead element with the first row
+                tfoot: false, // should we include a tfoot element with the last row
+                attrs: {} // attributes for the table element, can be used to
+            };
+
+        options = $.extend(defaults, options);
+
+        table.addClass("pure-table");
+        table.css("width", "100%");
+        table.attr(options.attrs);
+
+        var vtx_type = $("input[name=vtx_type]:checked").val();
+
+        // loop through all the rows, we will deal with tfoot and thead later
+        for (i = 0; i < data.length; i++) {
+            row = $('<tr />');
+
+            for (j = 0; j < 3; j = j + 1) {
+                var cellData = data[i][j];
+                if (j == 2 && i != 0) {
+                    cellData = $('<label class="switch switch--list-item"><input type="checkbox" data-channel="' + i + '" class="switch__input" ' + (data[i][j] ? "checked" : "") + '><div class="switch__toggle"></div></label>');
+                    cellData.find("input").tap(function() {
+                        var el = $(this);
+                        var checked = el.prop("checked") == "checked" ? true : false;
+                        var channel = el.data("channel");
+                        vtx_enabled[channel-1][2] = checked;
+                    })
+                }
+                if (i === 0 && options.th) {
+                    row.append($('<th />').html(cellData));
+                } else {
+                    row.append($('<td />').html(cellData));
+                }
+            }
+            rows.push(row);
+        }
+
+        // if we want a thead use shift to get it
+        if (options.thead) {
+            thead = rows.shift();
+            thead = $('<thead />').append(thead);
+            table.append(thead);
+        }
+
+        // add all the rows
+        for (i = 0; i < rows.length; i = i + 1) {
+            table.append(rows[i]);
+        }
+
+        return table;
+    };
+
+    function disableChannels(channels) {
+
+        for (var i = 0; i < channels.length; i++) {
+            vtx_enabled[channels[i]][2] = false;
+        }
+
+        window.localStorage.setItem("vtx_enabled", JSON.stringify(vtx_enabled));
+
+        var excluded_table = arrayToExcludedTable(vtx_enabled.slice(0));
+        $("#excluded-channel-table").html(excluded_table);
+
+    }
+
+    function render_dip(data) {
+        var ret = $("<div />");
+        var channel_bottom = $("<div />");
+        channel_bottom.css({"margin-left": "15px", "margin-top": "-7px"});
+        if (data.length == 0) return ret;
         ret.append("<sup style='top:-12px; padding-right: 2px;'>on</sup>");
         for (var i = 0; i < data.length; i++) {
-            var dip_switch = jQuery("<img />");
+            var dip_switch = $("<img />");
             if (data[i]) {
                 dip_switch.attr("src", "img/on.gif");
             } else {
                 dip_switch.attr("src", "img/off.gif");
             }
             ret.append(dip_switch);
-
+            var channel_div = $("<div />");
+            channel_div.css({"font-size": "75%", "display": "inline-block", "width": "10px", "text-align": "center"});
+            channel_div.html(i);
+            channel_bottom.append(channel_div);
         }
+        ret.append(channel_bottom);
         return ret;
     }
 
     generateVtxTable();
 
-    jQuery("input[type=radio]").click(function() {
+    $(".vtx_type, .pilot_count").click(function() {
         generateVtxTable();
     });
-    jQuery("#ignore").change(function() {
+    $("#ignore").change(function() {
         generateVtxTable();
     });
+
+    $("#settings-btn").tap(function() {
+        $("#main").hide();
+        $("#settings").show();
+    });
+
+    $("#back-btn").tap(function() {
+        $("#main").show();
+        generateVtxTable();
+        $("#settings").hide();
+    });
+
+    $("#aus-btn").tap(function() {
+        disableChannels([0,1,2,3,31,30,29,28]);
+    })
+
+    $("#boscam1-btn").tap(function() {
+        disableChannels([31]);
+    })
+
+    $("#reset-btn").tap(function() {
+        for (var i = 0; i < vtx_enabled.length; i++) {
+            vtx_enabled[i][2] = true;
+        }
+
+        window.localStorage.setItem("vtx_enabled", JSON.stringify(vtx_enabled));
+
+        var excluded_table = arrayToExcludedTable(vtx_enabled.slice(0));
+        $("#excluded-channel-table").html(excluded_table);
+
+    })
 });
