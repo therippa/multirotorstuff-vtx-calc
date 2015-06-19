@@ -83,6 +83,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
+      customArchiveName = "VTX Calculator"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>
