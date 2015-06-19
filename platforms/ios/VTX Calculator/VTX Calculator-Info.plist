@@ -71,6 +71,7 @@
     <key>UISupportedInterfaceOrientations</key>
     <array>
       <string>UIInterfaceOrientationPortrait</string>
+      <string>UIInterfaceOrientationPortraitUpsideDown</string>
     </array>
     <key>UISupportedInterfaceOrientations~ipad</key>
     <array>
@@ -181,6 +182,10 @@
         <key>UILaunchImageSize</key>
         <string>{768, 1024}</string>
       </dict>
+    </array>
+    <key>UIInterfaceOrientation</key>
+    <array>
+      <string>UIInterfaceOrientationPortrait</string>
     </array>
   </dict>
 </plist>

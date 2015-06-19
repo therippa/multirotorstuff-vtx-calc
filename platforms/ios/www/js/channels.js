@@ -143,7 +143,11 @@ jQuery(document).ready(function() {
     }
 
     var arrayToTable = function (data, good_channels, options) {
-        data.unshift(["Channel", "Frequency", "DIP", "Prev Mhz Diff", "Next Mhz Diff"]);
+        if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i) || (navigator.userAgent.match(/iPad/i)))) {
+          data.unshift(["Channel", "Freq", "DIP", "Prev Mhz Diff", "Next Mhz Diff"]);
+        } else {
+          data.unshift(["Channel", "Frequency", "DIP", "Prev Mhz Diff", "Next Mhz Diff"]);
+        }
         var table = jQuery('<table />'),
             thead,
             tfoot,
