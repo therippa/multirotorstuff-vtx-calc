@@ -9,11 +9,11 @@
                 "parents": {
                     "/*": [
                         {
-                            "xml": "<feature name=\"StatusBar\"><param name=\"android-package\" value=\"org.apache.cordova.statusbar.StatusBar\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
+                            "xml": "<feature name=\"StatusBar\"><param name=\"android-package\" value=\"org.apache.cordova.statusbar.StatusBar\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -22,10 +22,10 @@
         }
     },
     "installed_plugins": {
-        "org.apache.cordova.statusbar": {
+        "cordova-plugin-inappbrowser": {
             "PACKAGE_NAME": "com.multirotorstuff.vtx_calc2"
         },
-        "cordova-plugin-inappbrowser": {
+        "org.apache.cordova.statusbar": {
             "PACKAGE_NAME": "com.multirotorstuff.vtx_calc2"
         }
     },

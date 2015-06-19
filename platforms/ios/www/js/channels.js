@@ -124,7 +124,7 @@ $(document).ready(function() {
         var table = arrayToTable(vtx_table.slice(0), good_channels);
         $("#channel-table").html(table);
 
-        var excluded_table = arrayToTable2(vtx_enabled.slice(0));
+        var excluded_table = arrayToExcludedTable(vtx_enabled.slice(0));
         $("#excluded-channel-table").html(excluded_table);
 
     }
@@ -190,7 +190,7 @@ $(document).ready(function() {
         return table;
     };
 
-    var arrayToTable2 = function (data, good_channels, options) {
+    var arrayToExcludedTable = function (data, good_channels, options) {
         data.unshift(["Channel", "Freq", "Enabled"]);
         var table = $('<table />'),
             thead,
@@ -261,7 +261,7 @@ $(document).ready(function() {
 
         window.localStorage.setItem("vtx_enabled", JSON.stringify(vtx_enabled));
 
-        var excluded_table = arrayToTable2(vtx_enabled.slice(0));
+        var excluded_table = arrayToExcludedTable(vtx_enabled.slice(0));
         $("#excluded-channel-table").html(excluded_table);
 
     }
@@ -324,7 +324,7 @@ $(document).ready(function() {
 
         window.localStorage.setItem("vtx_enabled", JSON.stringify(vtx_enabled));
 
-        var excluded_table = arrayToTable2(vtx_enabled.slice(0));
+        var excluded_table = arrayToExcludedTable(vtx_enabled.slice(0));
         $("#excluded-channel-table").html(excluded_table);
 
     })

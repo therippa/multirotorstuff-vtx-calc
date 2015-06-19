@@ -45,8 +45,6 @@
     <icon src="icon.png" />
 
 
-    <icon src="icon.png" />
-
     <!-- iOS 8.0+ -->
     <!-- iPhone 6 Plus  -->
     <icon src="res/icons/ios/icon-60@3x.png" gap:platform="ios" width="180" height="180" />
