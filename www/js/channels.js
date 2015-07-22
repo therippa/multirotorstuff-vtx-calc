@@ -16,6 +16,15 @@ $(document).ready(function() {
         var vtx_enabled = vtx_default_enabled;
     }
 
+    // set button enabled/disabled color
+    if(vtx_enabled[28][2] == false) {
+      $("#aus-btn").css('background-color', 'grey');
+    }
+
+    if(vtx_enabled[31][2] == false) {
+      $("#boscam1-btn").css('background-color', 'grey');
+    }
+
     function sortFunction(a, b) {
         if (a[1] === b[1]) {
             return 0;
@@ -266,6 +275,23 @@ $(document).ready(function() {
 
     }
 
+    function toggleChannels(channels) {
+
+        for (var i = 0; i < channels.length; i++) {
+          if(vtx_enabled[channels[i]][2] == true) {
+            vtx_enabled[channels[i]][2] = false;
+          } else {
+            vtx_enabled[channels[i]][2] = true;
+          }
+        }
+
+        window.localStorage.setItem("vtx_enabled", JSON.stringify(vtx_enabled));
+
+        var excluded_table = arrayToExcludedTable(vtx_enabled.slice(0));
+        $("#excluded-channel-table").html(excluded_table);
+
+    }
+
     function render_dip(data) {
         var ret = $("<div />");
         var channel_bottom = $("<div />");
@@ -310,17 +336,30 @@ $(document).ready(function() {
     });
 
     $("#aus-btn").tap(function() {
-        disableChannels([0,1,2,3,31,30,29,28]);
+        toggleChannels([0,1,2,3,31,30,29,28]);
+        if($(this).css('background-color') === 'rgb(128, 128, 128)') {
+          $(this).css('background-color', '#4383CD');
+        } else {
+          $(this).css('background-color', 'grey');
+        }
     })
 
     $("#boscam1-btn").tap(function() {
-        disableChannels([31]);
+        toggleChannels([31]);
+        if($(this).css('background-color') === 'rgb(128, 128, 128)') {
+          $(this).css('background-color', '#4383CD');
+        } else {
+          $(this).css('background-color', 'grey');
+        }
     })
 
     $("#reset-btn").tap(function() {
         for (var i = 0; i < vtx_enabled.length; i++) {
             vtx_enabled[i][2] = true;
         }
+        // reset button colors;
+        $("#aus-btn").css('background-color', '#4383CD');
+        $("#boscam1-btn").css('background-color', '#4383CD');
 
         window.localStorage.setItem("vtx_enabled", JSON.stringify(vtx_enabled));
 
