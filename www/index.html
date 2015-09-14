@@ -46,13 +46,17 @@
 
                 <div style="text-align: center;">
                     <label class="radio-button">Apply Exclusion Presets:</label>
-                    <div style="margin-bottom: 10px;"><button style="min-width: 230px;" id="aus-btn" class="button">AU/NZ Legal Channels</button></div>
-                    <div style="margin-bottom: 10px;"><button style="min-width: 230px;"id="boscam1-btn" class="button">Boscam E1/E8 Interference</button></div>
-                    <div style="margin-bottom: 10px;"><button style="min-width: 230px;"id="raceband-btn" class="button">Race Bands</button></div>
-                    <div style="margin-bottom: 10px;"><button style="min-width: 230px;"id="reset-btn" class="button">Reset All</button></div>
+                    <div style="margin-bottom: 10px;"><button style="min-width: 230px;" id="aus-btn" class="button setting-btn">AU/NZ Legal Channels</button></div>
+                    <div style="margin-bottom: 10px;"><button style="min-width: 230px;"id="boscam1-btn" class="button setting-btn">Boscam E1/E8 Interference</button></div>
+                    <div style="margin-bottom: 10px;"><button style="min-width: 230px;"id="raceband-btn" class="button setting-btn">Race Bands</button></div>
+                    <div style="margin-bottom: 10px;"><button style="min-width: 230px;"id="reset-btn" class="button setting-btn">Reset All</button></div>
 
                 </div>
-                <div id="excluded-channel-table"></div>
+                <div>
+                    <table id="excluded-channel-table" class="pure-table" width="100%">
+
+                    </table>
+                </div>
             </div>
         </div>
 
@@ -98,17 +102,50 @@
 
             <div>
                 <div style="text-align: center;"><label class="radio-button">Transmitter:</label></div>
-                <div style="text-align: center; width:280px;margin:0 auto 30px auto;">
-                    <select id="vtx_type" class="vtx_type">
+                <select id="vtx_type" class="vtx_type button-bar" style="width:280px; margin:0 auto 30px auto;">
 
-                    </select>
-                </div>
+                </select>
             </div>
 
-                <div id="channel-table"></div>
+                <div>
+                    <table id="channel-table" class="pure-table" width="100%">
+
+                    </table>
+                </div>
             </div>
         </div>
 
+
+
+        <script id="vtx_table_header" type="text/html">
+            <tr>
+                <th>Freq</th>
+                <th>Name</th>
+                <th>Setting</th>
+            </tr>
+        </script>
+
+        <script id="vtx_table_row" type="text/html">
+            <tr class="{{cssClass}}">
+                <td>{{frequency}}</td>
+                <td>{{name}}</td>
+                <td>{{{dip}}}</td>
+            </tr>
+        </script>
+
+        <script id="exclude_table_header" type="text/html">
+            <tr>
+                <th>Frequency</th>
+                <th>Show</th>
+            </tr>
+        </script>
+
+        <script id="exclude_table_row" type="text/html">
+            <tr class="{{cssClass}}">
+                <td>{{frequency}}</td>
+                <td class="vtx-switch" style="text-align: center;"></td>
+            </tr>
+        </script>
 
         <script id="transmitter" type="text/html">
             <option value="{{id}}">{{name}}</option>
