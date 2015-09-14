@@ -37,14 +37,14 @@ $(document).ready(function() {
     var checked = '';
 
     //generate transmitters list
-    for (var i = 0; i < Transmitters.length; i++) {
+    $.each(Transmitters, function(i, e) {
         if (i == 0) {
             checked = 'checked';
         }
-        var transmitter = ich.transmitter({name: Transmitters[i].name, checked: checked});
+        var transmitter = ich.transmitter({name: e.name, id: e.id, checked: checked});
         checked = '';
-        $("#transmitter-list").append(transmitter);
-    }
+        $("#vtx_type").append(transmitter);
+    });
 
 
 
@@ -173,7 +173,7 @@ $(document).ready(function() {
         table.css("width", "100%");
         table.attr(options.attrs);
 
-        var vtx_type = $("input[name=vtx_type]:checked").val();
+        var vtx_type = $("#vtx_type").val();
 
         // loop through all the rows, we will deal with tfoot and thead later
         for (i = 0; i < data.length; i++) {
@@ -184,8 +184,16 @@ $(document).ready(function() {
             }
             for (j = 0; j < 3; j = j + 1) {
                 var cellData = data[i][j];
+
+                // use transmitter channel name
+                if (j == 0 && i != 0) {
+                    cellData = Transmitters[vtx_type].getChannelName(data[i][1]);
+                }
+
+                // render dip settings
                 if (j == 2 && i != 0) {
-                    cellData = render_dip(cellData[vtx_type]);
+                    var dipData = Transmitters[vtx_type].dip(data[i][1]);
+                    cellData = render_dip(dipData);
                 }
                 if (i === 0 && options.th) {
                     row.append($('<th />').html(cellData));
@@ -313,7 +321,7 @@ $(document).ready(function() {
         ret.append("<sup style='top:-12px; padding-right: 2px;'>on</sup>");
         for (var i = 0; i < data.length; i++) {
             var dip_switch = $("<img />");
-            if (data[i]) {
+            if (data[i] == "1") {
                 dip_switch.attr("src", "img/on.gif");
             } else {
                 dip_switch.attr("src", "img/off.gif");
@@ -333,7 +341,8 @@ $(document).ready(function() {
     $(".vtx_type, .pilot_count").click(function() {
         generateVtxTable();
     });
-    $("#ignore").change(function() {
+
+    $("#ignore, .vtx_type").change(function() {
         generateVtxTable();
     });
 
@@ -355,7 +364,7 @@ $(document).ready(function() {
         } else {
           $(this).css('background-color', 'grey');
         }
-    })
+    });
 
     $("#boscam1-btn").tap(function() {
         toggleChannels([31]);
@@ -364,7 +373,7 @@ $(document).ready(function() {
         } else {
           $(this).css('background-color', 'grey');
         }
-    })
+    });
 
     $("#reset-btn").tap(function() {
         for (var i = 0; i < vtx_enabled.length; i++) {

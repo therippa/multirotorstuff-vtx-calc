@@ -34,7 +34,7 @@
     <div>
 
       <div style="margin: 10px;">
-          <div style="text-align: center;"><a href="#" onClick="window.open('http://www.multirotorstuff.com', '_system');"><img src="img/logo.svg" style="width: 100%; max-width: 500px;"></a></div>
+          <!--<div style="text-align: center;"><a href="#" onClick="window.open('http://www.multirotorstuff.com', '_system');"><img src="img/logo.svg" style="width: 100%; max-width: 500px;"></a></div>-->
         </div>
 
         <div id="settings" style="display: none;">
@@ -48,6 +48,7 @@
                     <label class="radio-button">Apply Exclusion Presets:</label>
                     <div style="margin-bottom: 10px;"><button style="min-width: 230px;" id="aus-btn" class="button">AU/NZ Legal Channels</button></div>
                     <div style="margin-bottom: 10px;"><button style="min-width: 230px;"id="boscam1-btn" class="button">Boscam E1/E8 Interference</button></div>
+                    <div style="margin-bottom: 10px;"><button style="min-width: 230px;"id="raceband-btn" class="button">Race Bands</button></div>
                     <div style="margin-bottom: 10px;"><button style="min-width: 230px;"id="reset-btn" class="button">Reset All</button></div>
 
                 </div>
@@ -96,9 +97,11 @@
             </div>
 
             <div>
-                <div style="text-align: center;"><label class="radio-button">Transmitter DIP:</label></div>
-                <div id="transmitter-list" class="button-bar" style="width:280px;margin:0 auto 30px auto;">
+                <div style="text-align: center;"><label class="radio-button">Transmitter:</label></div>
+                <div style="text-align: center; width:280px;margin:0 auto 30px auto;">
+                    <select id="vtx_type" class="vtx_type">
 
+                    </select>
                 </div>
             </div>
 
@@ -108,11 +111,7 @@
 
 
         <script id="transmitter" type="text/html">
-            <div class="button-bar__item">
-                <input type="radio" name="vtx_type" class="vtx_type" value="immersionrc" {{checked}}>
-                <button class="button-bar__button">{{name}}</button>
-            </div>
-
+            <option value="{{id}}">{{name}}</option>
         </script>
 
         <script type="text/javascript" src="cordova.js"></script>

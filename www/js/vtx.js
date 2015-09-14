@@ -1,6 +1,7 @@
-var Transmitters = [];
+var Transmitters = {};
 
-var Transmitter = function(name) {
+var Transmitter = function(name, id) {
+    this.id = id
     this.name = name;
     this.hasDip = true;
 
@@ -19,22 +20,31 @@ var Transmitter = function(name) {
         };
     };
 
+    this.getChannelName = function(freq) {
+        if ((freq in this.vtxChannels) == false) return '';
+
+        return this.vtxChannels[freq].name;
+    };
+
     this.dip = function(freq) {
+
+        if ((freq in this.vtxChannels) == false) return '';
+
         var channelInfo = this.vtxChannels[freq];
         var dipSettings = '';
 
-        var channelDips = channelInfo['dip'].split(".");
+        var channelDips = channelInfo['dip'].split('.');
 
         for (var i = 0; i < channelDips.length; i++) {
             dipSettings += this.dipSettings[channelDips[i]];
         }
 
 
-        return dipSettings;
+        return dipSettings.split('');
     }
 };
 
-var ImmersionRC = new Transmitter("ImmersionRC/Fatshark");
+var ImmersionRC = new Transmitter("ImmersionRC/Fatshark", "immrc");
 
 ImmersionRC.addDip('ch1', '111');
 ImmersionRC.addDip('ch2', '011');
@@ -52,10 +62,10 @@ ImmersionRC.addChannel(5820, "Ch5", "ch5");
 ImmersionRC.addChannel(5840, "Ch6", "ch6");
 ImmersionRC.addChannel(5860, "Ch7", "ch7");
 
-Transmitters.push(ImmersionRC);
+Transmitters["immrc"] = ImmersionRC;
 
 
-var Ubad200 = new Transmitter("UBAD/Hawkeye 200mw");
+var Ubad200 = new Transmitter("UBAD/Hawkeye 200mw", "ubad200");
 
 Ubad200.addDip('fra', '11');
 Ubad200.addDip('frb', '00');
@@ -105,10 +115,10 @@ Ubad200.addChannel(5828, 'FR-D Ch6', 'frd.ch6');
 Ubad200.addChannel(5847, 'FR-D Ch7', 'frd.ch7');
 Ubad200.addChannel(5866, 'FR-D Ch8', 'frd.ch8');
 
-Transmitters.push(Ubad200);
+Transmitters["ubad200"]  = Ubad200;
 
 
-var Ubad600 = new Transmitter("UBAD/Hawkeye 600mw");
+var Ubad600 = new Transmitter("UBAD/Hawkeye 600mw", "ubad600");
 
 Ubad600.addDip('fra', '00');
 Ubad600.addDip('frb', '11');
@@ -159,19 +169,19 @@ Ubad600.addChannel(5905, 'FR-D Ch6', 'frd.ch6');
 Ubad600.addChannel(5925, 'FR-D Ch7', 'frd.ch7');
 Ubad600.addChannel(5945, 'FR-D Ch8', 'frd.ch8');
 
-Transmitters.push(Ubad600);
+Transmitters["ubad600"] = Ubad600;
 
 
-var TBSGreenhorn25 = new Transmitter("TBS Greenhorn 25mw");
+var TBSGreenhorn25 = new Transmitter("TBS Greenhorn 25mw", "tbs25");
 
 TBSGreenhorn25.addDip('ch1', '1111');
-TBSGreenhorn25.addDip('ch1', '0111');
-TBSGreenhorn25.addDip('ch1', '1011');
-TBSGreenhorn25.addDip('ch1', '0011');
-TBSGreenhorn25.addDip('ch1', '1101');
-TBSGreenhorn25.addDip('ch1', '0101');
-TBSGreenhorn25.addDip('ch1', '1001');
-TBSGreenhorn25.addDip('ch1', '0001');
+TBSGreenhorn25.addDip('ch2', '0111');
+TBSGreenhorn25.addDip('ch3', '1011');
+TBSGreenhorn25.addDip('ch4', '0011');
+TBSGreenhorn25.addDip('ch5', '1101');
+TBSGreenhorn25.addDip('ch6', '0101');
+TBSGreenhorn25.addDip('ch7', '1001');
+TBSGreenhorn25.addDip('ch8', '0001');
 
 TBSGreenhorn25.addChannel(5725, 'Ch1', 'ch1');
 TBSGreenhorn25.addChannel(5745, 'Ch2', 'ch2');
@@ -182,10 +192,10 @@ TBSGreenhorn25.addChannel(5825, 'Ch6', 'ch6');
 TBSGreenhorn25.addChannel(5845, 'Ch7', 'ch7');
 TBSGreenhorn25.addChannel(5865, 'Ch8', 'ch8');
 
-Transmitters.push(TBSGreenhorn25);
+Transmitters["tbs25"] = TBSGreenhorn25;
 
 
-var FT951 = new Transmitter("FT951");
+var FT951 = new Transmitter("FT951", "ft951");
 
 FT951.addDip('fra', '00');
 FT951.addDip('frb', '01');
@@ -224,10 +234,10 @@ FT951.addChannel(5828, 'GR-B Ch6', 'frb.ch6');
 FT951.addChannel(5847, 'GR-B Ch7', 'frb.ch7');
 FT951.addChannel(5866, 'GR-B Ch8', 'frb.ch8');
 
-Transmitters.push(FT951);
+Transmitters["ft951"] = FT951;
 
 
-var FT952 = new Transmitter("FT952");
+var FT952 = new Transmitter("FT952", "ft952");
 
 FT952.addDip('fra', '00');
 FT952.addDip('frb', '01');
@@ -279,7 +289,7 @@ FT952.addChannel(5828, 'FR-B Ch6', 'frb.ch6');
 FT952.addChannel(5847, 'FR-B Ch7', 'frb.ch7');
 FT952.addChannel(5866, 'FR-B Ch8', 'frb.ch8');
 
-Transmitters.push(FT952);
+Transmitters["ft952"] = FT952;
 
 
 
@@ -287,481 +297,157 @@ var vtx = [
     [
         "FR-C 4",
         5645,
-        {
-            "hawkeye": [
-                1,
-                0,
-                0,
-                1,
-                0
-            ],
-            "immersionrc": []
-        }
+    ],
+    [
+        "RB1",
+        5658
     ],
     [
         "FR-C 3",
         5665,
-        {
-            "hawkeye": [
-                1,
-                0,
-                1,
-                1,
-                0
-            ],
-            "immersionrc": []
-        }
     ],
     [
         "FR-C 2",
         5685,
-        {
-            "hawkeye": [
-                1,
-                1,
-                0,
-                1,
-                0
-            ],
-            "immersionrc": []
-        }
+    ],
+    [
+        "RB2",
+        5695
     ],
     [
         "FR-C 1",
         5705,
-        {
-            "hawkeye": [
-                1,
-                1,
-                1,
-                1,
-                0
-            ],
-            "immersionrc": []
-        }
     ],
     [
         "FR-A 8",
         5725,
-        {
-            "hawkeye": [
-                0,
-                0,
-                0,
-                1,
-                1
-            ],
-            "immersionrc": []
-        }
+    ],
+    [
+        "RB3",
+        5732
     ],
     [
         "FR-B 1",
         5733,
-        {
-            "hawkeye": [
-                1,
-                1,
-                1,
-                0,
-                1
-            ],
-            "immersionrc": []
-        }
     ],
     [
         "ImmrRC 1",
         5740,
-        {
-            "hawkeye": [
-                1,
-                1,
-                1,
-                0,
-                0
-            ],
-            "immersionrc": [
-                1,
-                1,
-                1
-            ]
-        }
     ],
     [
         "FR-A 7",
         5745,
-        {
-            "hawkeye": [
-                0,
-                0,
-                1,
-                1,
-                1
-            ],
-            "immersionrc": []
-        }
     ],
     [
         "FR-B 2",
         5752,
-        {
-            "hawkeye": [
-                1,
-                1,
-                0,
-                0,
-                1
-            ],
-            "immersionrc": []
-        }
     ],
     [
         "ImmrRC 2",
         5760,
-        {
-            "hawkeye": [
-                1,
-                1,
-                0,
-                0,
-                0
-            ],
-            "immersionrc": [
-                1,
-                1,
-                0
-            ]
-        }
     ],
     [
         "FR-A 6",
         5765,
-        {
-            "hawkeye": [
-                0,
-                1,
-                0,
-                1,
-                1
-            ],
-            "immersionrc": []
-        }
+    ],
+    [
+        "RB4",
+        5769
     ],
     [
         "FR-B 3",
         5771,
-        {
-            "hawkeye": [
-                1,
-                0,
-                1,
-                0,
-                1
-            ],
-            "immersionrc": []
-        }
     ],
     [
         "ImmrRC 3",
         5780,
-        {
-            "hawkeye": [
-                1,
-                0,
-                1,
-                0,
-                0
-            ],
-            "immersionrc": [
-                1,
-                0,
-                1
-            ]
-        }
     ],
     [
         "FR-A 5",
         5785,
-        {
-            "hawkeye": [
-                0,
-                1,
-                1,
-                1,
-                1
-            ],
-            "immersionrc": []
-        }
     ],
     [
         "FR-B 4",
         5790,
-        {
-            "hawkeye": [
-                1,
-                0,
-                0,
-                0,
-                1
-            ],
-            "immersionrc": []
-        }
     ],
     [
         "ImmrRC 4",
         5800,
-        {
-            "hawkeye": [
-                1,
-                0,
-                0,
-                0,
-                0
-            ],
-            "immersionrc": [
-                1,
-                0,
-                0
-            ]
-        }
     ],
     [
         "FR-A 4",
         5805,
-        {
-            "hawkeye": [
-                1,
-                0,
-                0,
-                1,
-                1
-            ],
-            "immersionrc": []
-        }
+    ],
+    [
+        "RB5",
+        5806
     ],
     [
         "FR-B 5",
         5809,
-        {
-            "hawkeye": [
-                0,
-                1,
-                1,
-                0,
-                1
-            ],
-            "immersionrc": []
-        }
     ],
     [
         "ImmrRC 5",
         5820,
-        {
-            "hawkeye": [
-                0,
-                1,
-                1,
-                0,
-                0
-            ],
-            "immersionrc": [
-                0,
-                1,
-                1
-            ]
-        }
     ],
     [
         "FR-A 3",
         5825,
-        {
-            "hawkeye": [
-                1,
-                0,
-                1,
-                1,
-                1
-            ],
-            "immersionrc": []
-        }
     ],
     [
         "FR-B 6",
         5828,
-        {
-            "hawkeye": [
-                0,
-                1,
-                0,
-                0,
-                1
-            ],
-            "immersionrc": []
-        }
     ],
     [
         "ImmrRC 6",
         5840,
-        {
-            "hawkeye": [
-                0,
-                1,
-                0,
-                0,
-                0
-            ],
-            "immersionrc": [
-                0,
-                1,
-                0
-            ]
-        }
+    ],
+    [
+        "RB6",
+        5843
     ],
     [
         "FR-A 2",
         5845,
-        {
-            "hawkeye": [
-                1,
-                1,
-                0,
-                1,
-                1
-            ],
-            "immersionrc": []
-        }
     ],
     [
         "FR-B 7",
         5847,
-        {
-            "hawkeye": [
-                0,
-                0,
-                1,
-                0,
-                1
-            ],
-            "immersionrc": []
-        }
     ],
     [
         "ImmrRC 7",
         5860,
-        {
-            "hawkeye": [
-                0,
-                0,
-                1,
-                0,
-                0
-            ],
-            "immersionrc": [
-                0,
-                0,
-                1
-            ]
-        }
     ],
     [
         "FR-A 1",
         5865,
-        {
-            "hawkeye": [
-                1,
-                1,
-                1,
-                1,
-                1
-            ],
-            "immersionrc": []
-        }
     ],
     [
         "FR-B 8",
         5866,
-        {
-            "hawkeye": [
-                0,
-                0,
-                0,
-                0,
-                1
-            ],
-            "immersionrc": []
-        }
     ],
     [
         "ImmrRC 8",
         5880,
-        {
-            "hawkeye": [
-                0,
-                0,
-                0,
-                0,
-                0
-            ],
-            "immersionrc": [
-                0,
-                0,
-                0
-            ]
-        }
     ],
     [
         "FR-C 5",
         5885,
-        {
-            "hawkeye": [
-                0,
-                1,
-                1,
-                1,
-                0
-            ],
-            "immersionrc": []
-        }
     ],
     [
         "FR-C 6",
         5905,
-        {
-            "hawkeye": [
-                0,
-                1,
-                0,
-                1,
-                0
-            ],
-            "immersionrc": []
-        }
+    ],
+    [
+        "RB8",
+        5917
     ],
     [
         "FR-C 7",
         5925,
-        {
-            "hawkeye": [
-                0,
-                0,
-                1,
-                1,
-                0
-            ],
-            "immersionrc": []
-        }
     ],
     [
         "FR-C 8",
         5945,
-        {
-            "hawkeye": [
-                0,
-                0,
-                0,
-                1,
-                0
-            ],
-            "immersionrc": []
-        }
     ]
 ];
