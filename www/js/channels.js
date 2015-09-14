@@ -160,7 +160,8 @@ $(document).ready(function() {
         table.css("width", "100%");
         table.attr(options.attrs);
 
-        var vtx_type = $("input[name=vtx_type]:checked").val();
+        //var vtx_type = $("input[name=vtx_type]:checked").val();
+        var vtx_type = $("select[name=vtx_type]").val();
 
         // loop through all the rows, we will deal with tfoot and thead later
         for (i = 0; i < data.length; i++) {
@@ -221,7 +222,7 @@ $(document).ready(function() {
         table.css("width", "100%");
         table.attr(options.attrs);
 
-        var vtx_type = $("input[name=vtx_type]:checked").val();
+        var vtx_type = $("select[name=vtx_type]").val();
 
         // loop through all the rows, we will deal with tfoot and thead later
         for (i = 0; i < data.length; i++) {
@@ -296,20 +297,25 @@ $(document).ready(function() {
         var ret = $("<div />");
         var channel_bottom = $("<div />");
         channel_bottom.css({"margin-left": "15px", "margin-top": "-7px"});
-        if (data.length == 0) return ret;
-        ret.append("<sup style='top:-12px; padding-right: 2px;'>on</sup>");
-        for (var i = 0; i < data.length; i++) {
-            var dip_switch = $("<img />");
-            if (data[i]) {
-                dip_switch.attr("src", "img/on.gif");
-            } else {
-                dip_switch.attr("src", "img/off.gif");
-            }
-            ret.append(dip_switch);
-            var channel_div = $("<div />");
-            channel_div.css({"font-size": "75%", "display": "inline-block", "width": "10px", "text-align": "center"});
-            channel_div.html(i);
-            channel_bottom.append(channel_div);
+        // and now it gets dirty. this is a wuick workaround to get transmitters without dip switches into the app
+        if(data.length == 1) {
+          ret.append(data);
+        } else {
+          if (data.length == 0) return ret;
+          ret.append("<sup style='top:-12px; padding-right: 2px;'>on</sup>");
+          for (var i = 0; i < data.length; i++) {
+              var dip_switch = $("<img />");
+              if (data[i]) {
+                  dip_switch.attr("src", "img/on.gif");
+              } else {
+                  dip_switch.attr("src", "img/off.gif");
+              }
+              ret.append(dip_switch);
+              var channel_div = $("<div />");
+              channel_div.css({"font-size": "75%", "display": "inline-block", "width": "10px", "text-align": "center"});
+              channel_div.html(i);
+              channel_bottom.append(channel_div);
+          }
         }
         ret.append(channel_bottom);
         return ret;
@@ -317,10 +323,10 @@ $(document).ready(function() {
 
     generateVtxTable();
 
-    $(".vtx_type, .pilot_count").click(function() {
+    $(".pilot_count").click(function() {
         generateVtxTable();
     });
-    $("#ignore").change(function() {
+    $("#ignore, .vtx_type").change(function() {
         generateVtxTable();
     });
 
