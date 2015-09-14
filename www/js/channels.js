@@ -34,6 +34,19 @@ $(document).ready(function() {
         }
     }
 
+    var checked = '';
+
+    //generate transmitters list
+    for (var i = 0; i < Transmitters.length; i++) {
+        if (i == 0) {
+            checked = 'checked';
+        }
+        var transmitter = ich.transmitter({name: Transmitters[i].name, checked: checked});
+        checked = '';
+        $("#transmitter-list").append(transmitter);
+    }
+
+
 
     function generateVtxTable() {
         var vtx_table = vtx.slice(0); //clone array
