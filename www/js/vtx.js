@@ -344,7 +344,7 @@ TS5823.addChannel(5828, 'FR-D Ch6', 'ch6.frd');
 TS5823.addChannel(5847, 'FR-D Ch7', 'ch7.frd');
 TS5823.addChannel(5866, 'FR-D Ch8', 'ch8.frd');
 
-Transmitters["ts5823"] = TS5823;
+Transmitters["TS5823"] = TS5823;
 
 
 var ET200 = new Transmitter("Eachine ET200/600", "ET200");
