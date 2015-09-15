@@ -2,6 +2,7 @@ $(document).ready(function() {
     "use strict";
 
     var settings_key = 'vtx_enabled_v2';
+
     var race_bands = [5658, 5695, 5732, 5769, 5806, 5843, 5880, 5917];
     var vtx_default_enabled = {};
 
@@ -33,6 +34,17 @@ $(document).ready(function() {
         checked = '';
         $("#vtx_type").append(transmitter);
     });
+
+    var selectList = $('#vtx_type option');
+
+    selectList.sort(function(a,b){
+        a = a.value;
+        b = b.value;
+
+        return a-b;
+    });
+
+    $('#vtx_type').html(selectList);
 
 
 
@@ -80,7 +92,13 @@ $(document).ready(function() {
 
         channel_table.empty();
 
-        channel_table.append(ich.vtx_table_header());
+        var hide = '';
+
+        if (Transmitters[vtx_type].hasDip === false) {
+            hide = "display: none;";
+        }
+
+        channel_table.append(ich.vtx_table_header({hide: hide}));
 
         for (var i = 0; i < data.length; i++) {
             var channelName = Transmitters[vtx_type].getChannelName(data[i]);
@@ -91,7 +109,7 @@ $(document).ready(function() {
                 cssClass = "good-channel";
             }
 
-            var tr = ich.vtx_table_row({name: channelName, frequency: data[i], dip: dipData.html(), cssClass: cssClass})
+            var tr = ich.vtx_table_row({name: channelName, frequency: data[i], dip: dipData.html(), cssClass: cssClass, hide: hide})
 
 
             channel_table.append(tr);
