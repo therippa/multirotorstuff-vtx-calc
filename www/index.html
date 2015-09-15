@@ -102,7 +102,7 @@
 
             <div>
                 <div style="text-align: center;"><label class="radio-button">Transmitter:</label></div>
-                <select id="vtx_type" class="vtx_type button-bar" style="width:280px; margin:0 auto 30px auto;">
+                <select id="vtx_type" class="vtx_type button-bar" style="border: 1px solid rgba(18,114,224,.77); width:280px; margin:0 auto 30px auto;">
 
                 </select>
             </div>
@@ -121,7 +121,7 @@
             <tr>
                 <th>Freq</th>
                 <th>Name</th>
-                <th>Setting</th>
+                <th style="{{hide}}">Setting</th>
             </tr>
         </script>
 
@@ -129,7 +129,7 @@
             <tr class="{{cssClass}}">
                 <td>{{frequency}}</td>
                 <td>{{name}}</td>
-                <td>{{{dip}}}</td>
+                <td style="{{hide}}">{{{dip}}}</td>
             </tr>
         </script>
 
