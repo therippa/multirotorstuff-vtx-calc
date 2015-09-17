@@ -49,3 +49,5 @@ crashlytics.properties
 crashlytics-build.properties
 
 /private/
+
+.divshot-cache

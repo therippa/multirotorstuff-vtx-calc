@@ -49,9 +49,11 @@
 /Users/jbaker/projects/mrs_vtx/platforms/android/ant-build/res/drawable-xxhdpi/icon.png \
 /Users/jbaker/projects/mrs_vtx/platforms/android/assets/_where-is-www.txt \
 /Users/jbaker/projects/mrs_vtx/platforms/android/assets/www \
+/Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/api \
 /Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/cordova.js \
 /Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/cordova_plugins.js \
 /Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/css \
+/Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/error.html \
 /Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/icon.png \
 /Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/img \
 /Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/index.html \
@@ -59,6 +61,7 @@
 /Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/plugins \
 /Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/spec \
 /Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/spec.html \
+/Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/api/transmitters.json \
 /Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/css/channels.css \
 /Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/css/index.css \
 /Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/css/onsen-css-components.css \

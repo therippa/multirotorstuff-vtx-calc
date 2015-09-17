@@ -38,13 +38,14 @@
         </div>
 
         <div id="settings" style="display: none;">
-            <div style="text-align: center;">
+            <div style="text-align: center; margin-bottom: 20px;">
                 <button id="back-btn" class="button">Back</button>
             </div>
 
             <div style="text-align: center;">
 
                 <div style="text-align: center;">
+                    <div style="margin-bottom: 10px;"><button style="min-width: 230px;" id="vtx-btn" class="button setting-btn">Refresh Transmitters</button></div>
                     <label class="radio-button">Apply Exclusion Presets:</label>
                     <div style="margin-bottom: 10px;"><button style="min-width: 230px;" id="aus-btn" class="button setting-btn">AU/NZ Legal Channels</button></div>
                     <div style="margin-bottom: 10px;"><button style="min-width: 230px;"id="boscam1-btn" class="button setting-btn">Boscam E1/E8 Interference</button></div>
@@ -116,6 +117,11 @@
         </div>
 
 
+        <div class="modal" id="vtx-modal" style="display: none;">
+            <div class="modal__content">
+                Getting the latest transmitter list...
+            </div>
+        </div>
 
         <script id="vtx_table_header" type="text/html">
             <tr>

@@ -1,40 +1,11 @@
+var settings_key = 'vtx_enabled_v2';
+var race_bands = [5658, 5695, 5732, 5769, 5806, 5843, 5880, 5917];
+var vtx_default_enabled = {};
+var vtx_enabled;
+var json_transmitters;
+
 $(document).ready(function() {
     "use strict";
-
-    var settings_key = 'vtx_enabled_v2';
-    var race_bands = [5658, 5695, 5732, 5769, 5806, 5843, 5880, 5917];
-    var vtx_default_enabled = {};
-
-    for (var i = 0; i < frequencies.length; i++) {
-        if (race_bands.indexOf(frequencies[i]) == -1) {
-            vtx_default_enabled[frequencies[i]] = true;
-        } else {
-            vtx_default_enabled[frequencies[i]] = false;
-        }
-
-    }
-
-    var potential_vtx_enabled = window.localStorage.getItem(settings_key);
-
-    if (potential_vtx_enabled) {
-        var vtx_enabled = JSON.parse(potential_vtx_enabled);
-    } else {
-        var vtx_enabled = vtx_default_enabled;
-    }
-
-    //generate transmitters list
-    var checked = '';
-
-    $.each(Transmitters, function(i, e) {
-        if (i == 0) {
-            checked = 'checked';
-        }
-        var transmitter = ich.transmitter({name: e.name, id: e.id, checked: checked});
-        checked = '';
-        $("#vtx_type").append(transmitter);
-    });
-
-
 
     function generateVtxTable() {
         var vtx_table = frequencies.slice(0); //clone array
@@ -80,7 +51,13 @@ $(document).ready(function() {
 
         channel_table.empty();
 
-        channel_table.append(ich.vtx_table_header());
+        var hide = '';
+
+        if (Transmitters[vtx_type].hasDip === false) {
+            hide = "display: none;";
+        }
+
+        channel_table.append(ich.vtx_table_header({hide: hide}));
 
         for (var i = 0; i < data.length; i++) {
             var channelName = Transmitters[vtx_type].getChannelName(data[i]);
@@ -91,7 +68,7 @@ $(document).ready(function() {
                 cssClass = "good-channel";
             }
 
-            var tr = ich.vtx_table_row({name: channelName, frequency: data[i], dip: dipData.html(), cssClass: cssClass})
+            var tr = ich.vtx_table_row({name: channelName, frequency: data[i], dip: dipData.html(), cssClass: cssClass, hide: hide})
 
 
             channel_table.append(tr);
@@ -181,52 +158,139 @@ $(document).ready(function() {
         return ret;
     }
 
-    generateVtxTable();
+    function getTransmitters() {
+        Transmitters = {};
+        $('#vtx_type').empty();
+        $("#vtx-modal").show();
+        $.get('http://development.multirotorstuff-vtx.divshot.io/api/transmitters.json', function(data) {
+            window.localStorage.setItem('transmitters', JSON.stringify(data));
+            json_transmitters = data;
+            window.localStorage.removeItem("vtx_type");
+            $("#vtx-modal").hide();
+            init();
 
-    $(".vtx_type, .pilot_count").click(function() {
-        generateVtxTable();
-    });
+        });
+    }
 
-    $("#ignore, .vtx_type").change(function() {
-        generateVtxTable();
-    });
+    function init() {
 
-    $("#settings-btn").tap(function() {
-        $("#main").hide();
-        $("#settings").show();
-    });
-
-    $("#back-btn").tap(function() {
-        $("#main").show();
-        generateVtxTable();
-        $("#settings").hide();
-    });
-
-    $("#aus-btn").tap(function() {
-        toggleChannels([5645, 5658, 5665, 5695, 5685, 5705, 5885, 5905, 5917, 5925, 5945], false);
-    });
-
-    $("#raceband-btn").tap(function() {
-        toggleChannels(race_bands, false);
-    });
-
-    $("#boscam1-btn").tap(function() {
-        toggleChannels([5945], false);
-    });
-
-    $("#reset-btn").tap(function() {
-
-        for (var n in vtx_enabled) {
-            vtx_enabled[n] = true;
+        for (var i = 0; i < json_transmitters.length; i++) {
+            var vtx = json_transmitters[i];
+            Transmitters[vtx.id] = new Transmitter(vtx.name, vtx.id);
+            $.extend(Transmitters[vtx.id], vtx);
         }
 
-        // reset button colors;
-        $(".setting-btn").css('background-color', '#4383CD');
 
-        saveSettings();
+        for (var i = 0; i < frequencies.length; i++) {
+            if (race_bands.indexOf(frequencies[i]) == -1) {
+                vtx_default_enabled[frequencies[i]] = true;
+            } else {
+                vtx_default_enabled[frequencies[i]] = false;
+            }
 
-        var excluded_table = arrayToExcludedTable();
-        $("#excluded-channel-table").html(excluded_table);
+        }
 
-    })
+        var potential_vtx_enabled = window.localStorage.getItem(settings_key);
+
+        if (potential_vtx_enabled) {
+            vtx_enabled = JSON.parse(potential_vtx_enabled);
+        } else {
+            vtx_enabled = vtx_default_enabled;
+        }
+
+        //generate transmitters list
+        var checked = '';
+
+        var keys = Object.keys(Transmitters);
+
+        keys.sort();
+
+
+        for (var i = 0; i < keys.length; i++) {
+            var e = Transmitters[keys[i]];
+            if (i == 0) {
+                checked = 'checked';
+            }
+            var transmitter = ich.transmitter({name: e.name, id: e.id, checked: checked});
+            checked = '';
+            $("#vtx_type").append(transmitter);
+        };
+
+        var selectList = $('#vtx_type option');
+
+        $('#vtx_type').html(selectList);
+
+        var selected_vtx = window.localStorage.getItem("vtx_type") || Transmitters[keys[0]].id;
+
+        $("#vtx_type").val(selected_vtx);
+
+        generateVtxTable();
+
+        $(".pilot_count").click(function () {
+            generateVtxTable();
+        });
+
+        $("#ignore, .vtx_type").change(function () {
+            window.localStorage.setItem("vtx_type", $("#vtx_type").val());
+            generateVtxTable();
+        });
+
+        $("#settings-btn").tap(function () {
+            $("#main").hide();
+            $("#settings").show();
+        });
+
+        $("#back-btn").tap(function () {
+            $("#main").show();
+            generateVtxTable();
+            $("#settings").hide();
+        });
+
+        $("#aus-btn").tap(function () {
+            toggleChannels([5645, 5658, 5665, 5695, 5685, 5705, 5885, 5905, 5917, 5925, 5945], false);
+        });
+
+        $("#raceband-btn").tap(function () {
+            toggleChannels(race_bands, false);
+        });
+
+        $("#vtx-btn").tap(function () {
+            getTransmitters();
+        });
+
+        $("#boscam1-btn").tap(function () {
+            toggleChannels([5945], false);
+        });
+
+        $("#whats-new-btn").tap(function () {
+            $("#whats-new-holder").hide();
+        });
+
+        $("#reset-btn").tap(function () {
+
+            for (var n in vtx_enabled) {
+                vtx_enabled[n] = true;
+            }
+
+            // reset button colors;
+            $(".setting-btn").css('background-color', '#4383CD');
+
+            saveSettings();
+
+            var excluded_table = arrayToExcludedTable();
+            $("#excluded-channel-table").html(excluded_table);
+
+        })
+    }
+
+    json_transmitters = window.localStorage.getItem('transmitters');
+
+    if (json_transmitters) {
+        json_transmitters = JSON.parse(json_transmitters);
+        init();
+    } else {
+        getTransmitters();
+
+    }
+
 });
