@@ -1,0 +1,9 @@
+{
+  "name": "multirotorstuff-vtx",
+  "root": "www",
+  "clean_urls": true,
+  "error_page": "error.html",
+  "headers": {
+    "/api/**": { "Access-Control-Allow-Origin": "*" }
+  }
+}

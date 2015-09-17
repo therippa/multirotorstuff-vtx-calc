@@ -41,9 +41,24 @@ var Transmitter = function(name, id) {
 
 
         return dipSettings.split('');
+    };
+
+    this.data = function() {
+        var output = {};
+
+        output["id"] = this.id;
+        output["name"] = this.name;
+        output["hasDip"] = this.hasDip;
+        output["dipSettings"] = this.dipSettings;
+        output["vtxChannels"] = this.vtxChannels;
+
+        return output;
     }
 };
 
+
+
+/*
 var ImmersionRC = new Transmitter("ImmersionRC/Fatshark", "immrc");
 
 ImmersionRC.addDip('ch1', '111');
@@ -680,6 +695,7 @@ TBSUnify_Raceband.addChannel(5880, 'Channel 32', 'ch16.b');
 
 Transmitters["TBSUnify_Raceband"] = TBSUnify_Raceband;
 
+*/
 var frequencies = [
     5645,
     5658,
@@ -721,3 +737,5 @@ var frequencies = [
     5925,
     5945
 ];
+
+
