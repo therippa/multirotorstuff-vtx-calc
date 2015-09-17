@@ -162,7 +162,7 @@ $(document).ready(function() {
         Transmitters = {};
         $('#vtx_type').empty();
         $("#vtx-modal").show();
-        $.get('http://development.multirotorstuff-vtx.divshot.io/api/transmitters.json', function(data) {
+        $.get('http://multirotorstuff-vtx.divshot.io/api/transmitters.json', function(data) {
             window.localStorage.setItem('transmitters', JSON.stringify(data));
             json_transmitters = data;
             window.localStorage.removeItem("vtx_type");
