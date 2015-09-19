@@ -255,12 +255,12 @@ TS5823.addDip('fre', '10');
 TS5823.addDip('frf', '00');
 
 TS5823.addDip('ch1', '111');
-TS5823.addDip('ch2', '011');
+TS5823.addDip('ch2', '110');
 TS5823.addDip('ch3', '101');
-TS5823.addDip('ch4', '001');
-TS5823.addDip('ch5', '110');
+TS5823.addDip('ch4', '100');
+TS5823.addDip('ch5', '011');
 TS5823.addDip('ch6', '010');
-TS5823.addDip('ch7', '100');
+TS5823.addDip('ch7', '001');
 TS5823.addDip('ch8', '000');
 
 TS5823.addChannel(5865, 'FR-A Ch1', 'ch1.fra');

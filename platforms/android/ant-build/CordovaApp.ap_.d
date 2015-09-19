@@ -54,6 +54,7 @@
 /Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/cordova_plugins.js \
 /Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/css \
 /Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/error.html \
+/Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/generate_json.html \
 /Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/icon.png \
 /Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/img \
 /Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/index.html \
@@ -106,6 +107,7 @@
 /Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/js/index.js \
 /Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/js/jquery-1.11.3.min.js \
 /Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/js/jquery.tap.min.js \
+/Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/js/transmitters.js \
 /Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/js/vtx.js \
 /Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/plugins/cordova-plugin-inappbrowser \
 /Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/plugins/org.apache.cordova.statusbar \
