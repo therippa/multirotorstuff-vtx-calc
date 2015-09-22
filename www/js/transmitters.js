@@ -249,55 +249,55 @@ Transmitters["ft952"] = FT952;
 
 var TS5823 = new Transmitter("TS5823/5828", "ts5823");
 
-TS5823.addDip('fra', '11');
-TS5823.addDip('frb', '01');
+TS5823.addDip('fra', '00');
+TS5823.addDip('frb', '11');
 TS5823.addDip('fre', '10');
-TS5823.addDip('frf', '00');
+TS5823.addDip('frf', '01');
 
 TS5823.addDip('ch1', '111');
-TS5823.addDip('ch2', '011');
+TS5823.addDip('ch2', '110');
 TS5823.addDip('ch3', '101');
-TS5823.addDip('ch4', '001');
-TS5823.addDip('ch5', '110');
+TS5823.addDip('ch4', '100');
+TS5823.addDip('ch5', '011');
 TS5823.addDip('ch6', '010');
-TS5823.addDip('ch7', '100');
+TS5823.addDip('ch7', '001');
 TS5823.addDip('ch8', '000');
 
-TS5823.addChannel(5865, 'FR-A Ch1', 'ch1.fra');
-TS5823.addChannel(5845, 'FR-A Ch2', 'ch2.fra');
-TS5823.addChannel(5825, 'FR-A Ch3', 'ch3.fra');
-TS5823.addChannel(5805, 'FR-A Ch4', 'ch4.fra');
-TS5823.addChannel(5785, 'FR-A Ch5', 'ch5.fra');
-TS5823.addChannel(5765, 'FR-A Ch6', 'ch6.fra');
-TS5823.addChannel(5745, 'FR-A Ch7', 'ch7.fra');
-TS5823.addChannel(5725, 'FR-A Ch8', 'ch8.fra');
+TS5823.addChannel(5725, 'FR-B Ch1', 'ch1.frb');
+TS5823.addChannel(5745, 'FR-B Ch2', 'ch2.frb');
+TS5823.addChannel(5765, 'FR-B Ch3', 'ch3.frb');
+TS5823.addChannel(5785, 'FR-B Ch4', 'ch4.frb');
+TS5823.addChannel(5805, 'FR-B Ch5', 'ch5.frb');
+TS5823.addChannel(5825, 'FR-B Ch6', 'ch6.frb');
+TS5823.addChannel(5845, 'FR-B Ch7', 'ch7.frb');
+TS5823.addChannel(5860, 'FR-B Ch8', 'ch8.frb');
 
-TS5823.addChannel(5740, 'FR-F Ch1', 'ch1.frf');
-TS5823.addChannel(5760, 'FR-F Ch2', 'ch2.frf');
-TS5823.addChannel(5780, 'FR-F Ch3', 'ch3.frf');
-TS5823.addChannel(5800, 'FR-F Ch4', 'ch4.frf');
-TS5823.addChannel(5820, 'FR-F Ch5', 'ch5.frf');
-TS5823.addChannel(5840, 'FR-F Ch6', 'ch6.frf');
-TS5823.addChannel(5860, 'FR-F Ch7', 'ch7.frf');
-TS5823.addChannel(5880, 'FR-F Ch8', 'ch8.frf');
+TS5823.addChannel(5740, 'FR-A Ch1', 'ch1.fra');
+TS5823.addChannel(5760, 'FR-A Ch2', 'ch2.fra');
+TS5823.addChannel(5780, 'FR-A Ch3', 'ch3.fra');
+TS5823.addChannel(5800, 'FR-A Ch4', 'ch4.fra');
+TS5823.addChannel(5820, 'FR-A Ch5', 'ch5.fra');
+TS5823.addChannel(5840, 'FR-A Ch6', 'ch6.fra');
+TS5823.addChannel(5860, 'FR-A Ch7', 'ch7.fra');
+TS5823.addChannel(5880, 'FR-A Ch8', 'ch8.fra');
 
-TS5823.addChannel(5705, 'FR-E Ch1', 'ch1.fre');
-TS5823.addChannel(5685, 'FR-E Ch2', 'ch2.fre');
-TS5823.addChannel(5665, 'FR-E Ch3', 'ch3.fre');
-TS5823.addChannel(5645, 'FR-E Ch4', 'ch4.fre');
-TS5823.addChannel(5885, 'FR-E Ch5', 'ch5.fre');
-TS5823.addChannel(5905, 'FR-E Ch6', 'ch6.fre');
-TS5823.addChannel(5925, 'FR-E Ch7', 'ch7.fre');
-TS5823.addChannel(5945, 'FR-E Ch8', 'ch8.fre');
+TS5823.addChannel(5705, 'FR-C Ch1', 'ch1.frc');
+TS5823.addChannel(5685, 'FR-C Ch2', 'ch2.frc');
+TS5823.addChannel(5665, 'FR-C Ch3', 'ch3.frc');
+TS5823.addChannel(5645, 'FR-C Ch4', 'ch4.frc');
+TS5823.addChannel(5885, 'FR-C Ch5', 'ch5.frc');
+TS5823.addChannel(5905, 'FR-C Ch6', 'ch6.frc');
+TS5823.addChannel(5925, 'FR-C Ch7', 'ch7.frc');
+TS5823.addChannel(5945, 'FR-C Ch8', 'ch8.frc');
 
-TS5823.addChannel(5733, 'FR-B Ch1', 'ch1.frb');
-TS5823.addChannel(5752, 'FR-B Ch2', 'ch2.frb');
-TS5823.addChannel(5771, 'FR-B Ch3', 'ch3.frb');
-TS5823.addChannel(5790, 'FR-B Ch4', 'ch4.frb');
-TS5823.addChannel(5809, 'FR-B Ch5', 'ch5.frb');
-TS5823.addChannel(5828, 'FR-B Ch6', 'ch6.frb');
-TS5823.addChannel(5847, 'FR-B Ch7', 'ch7.frb');
-TS5823.addChannel(5866, 'FR-B Ch8', 'ch8.frb');
+TS5823.addChannel(5733, 'FR-D Ch1', 'ch1.frd');
+TS5823.addChannel(5752, 'FR-D Ch2', 'ch2.frd');
+TS5823.addChannel(5771, 'FR-D Ch3', 'ch3.frd');
+TS5823.addChannel(5790, 'FR-D Ch4', 'ch4.frd');
+TS5823.addChannel(5809, 'FR-D Ch5', 'ch5.frd');
+TS5823.addChannel(5828, 'FR-D Ch6', 'ch6.frd');
+TS5823.addChannel(5847, 'FR-D Ch7', 'ch7.frd');
+TS5823.addChannel(5866, 'FR-D Ch8', 'ch8.frd');
 
 Transmitters["ts5823"] = TS5823;
 

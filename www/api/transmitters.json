@@ -637,147 +637,143 @@
     "name": "TS5823/5828",
     "hasDip": true,
     "dipSettings": {
-      "fra": "11",
-      "frb": "01",
+      "fra": "00",
+      "frb": "11",
       "fre": "10",
-      "frf": "00",
+      "frf": "01",
       "ch1": "111",
-      "ch2": "011",
+      "ch2": "110",
       "ch3": "101",
-      "ch4": "001",
-      "ch5": "110",
+      "ch4": "100",
+      "ch5": "011",
       "ch6": "010",
-      "ch7": "100",
+      "ch7": "001",
       "ch8": "000"
     },
     "vtxChannels": {
       "5645": {
-        "name": "FR-E Ch4",
-        "dip": "ch4.fre"
+        "name": "FR-C Ch4",
+        "dip": "ch4.frc"
       },
       "5665": {
-        "name": "FR-E Ch3",
-        "dip": "ch3.fre"
+        "name": "FR-C Ch3",
+        "dip": "ch3.frc"
       },
       "5685": {
-        "name": "FR-E Ch2",
-        "dip": "ch2.fre"
+        "name": "FR-C Ch2",
+        "dip": "ch2.frc"
       },
       "5705": {
-        "name": "FR-E Ch1",
-        "dip": "ch1.fre"
+        "name": "FR-C Ch1",
+        "dip": "ch1.frc"
       },
       "5725": {
-        "name": "FR-A Ch8",
-        "dip": "ch8.fra"
-      },
-      "5733": {
         "name": "FR-B Ch1",
         "dip": "ch1.frb"
       },
+      "5733": {
+        "name": "FR-D Ch1",
+        "dip": "ch1.frd"
+      },
       "5740": {
-        "name": "FR-F Ch1",
-        "dip": "ch1.frf"
-      },
-      "5745": {
-        "name": "FR-A Ch7",
-        "dip": "ch7.fra"
-      },
-      "5752": {
-        "name": "FR-B Ch2",
-        "dip": "ch2.frb"
-      },
-      "5760": {
-        "name": "FR-F Ch2",
-        "dip": "ch2.frf"
-      },
-      "5765": {
-        "name": "FR-A Ch6",
-        "dip": "ch6.fra"
-      },
-      "5771": {
-        "name": "FR-B Ch3",
-        "dip": "ch3.frb"
-      },
-      "5780": {
-        "name": "FR-F Ch3",
-        "dip": "ch3.frf"
-      },
-      "5785": {
-        "name": "FR-A Ch5",
-        "dip": "ch5.fra"
-      },
-      "5790": {
-        "name": "FR-B Ch4",
-        "dip": "ch4.frb"
-      },
-      "5800": {
-        "name": "FR-F Ch4",
-        "dip": "ch4.frf"
-      },
-      "5805": {
-        "name": "FR-A Ch4",
-        "dip": "ch4.fra"
-      },
-      "5809": {
-        "name": "FR-B Ch5",
-        "dip": "ch5.frb"
-      },
-      "5820": {
-        "name": "FR-F Ch5",
-        "dip": "ch5.frf"
-      },
-      "5825": {
-        "name": "FR-A Ch3",
-        "dip": "ch3.fra"
-      },
-      "5828": {
-        "name": "FR-B Ch6",
-        "dip": "ch6.frb"
-      },
-      "5840": {
-        "name": "FR-F Ch6",
-        "dip": "ch6.frf"
-      },
-      "5845": {
-        "name": "FR-A Ch2",
-        "dip": "ch2.fra"
-      },
-      "5847": {
-        "name": "FR-B Ch7",
-        "dip": "ch7.frb"
-      },
-      "5860": {
-        "name": "FR-F Ch7",
-        "dip": "ch7.frf"
-      },
-      "5865": {
         "name": "FR-A Ch1",
         "dip": "ch1.fra"
       },
+      "5745": {
+        "name": "FR-B Ch2",
+        "dip": "ch2.frb"
+      },
+      "5752": {
+        "name": "FR-D Ch2",
+        "dip": "ch2.frd"
+      },
+      "5760": {
+        "name": "FR-A Ch2",
+        "dip": "ch2.fra"
+      },
+      "5765": {
+        "name": "FR-B Ch3",
+        "dip": "ch3.frb"
+      },
+      "5771": {
+        "name": "FR-D Ch3",
+        "dip": "ch3.frd"
+      },
+      "5780": {
+        "name": "FR-A Ch3",
+        "dip": "ch3.fra"
+      },
+      "5785": {
+        "name": "FR-B Ch4",
+        "dip": "ch4.frb"
+      },
+      "5790": {
+        "name": "FR-D Ch4",
+        "dip": "ch4.frd"
+      },
+      "5800": {
+        "name": "FR-A Ch4",
+        "dip": "ch4.fra"
+      },
+      "5805": {
+        "name": "FR-B Ch5",
+        "dip": "ch5.frb"
+      },
+      "5809": {
+        "name": "FR-D Ch5",
+        "dip": "ch5.frd"
+      },
+      "5820": {
+        "name": "FR-A Ch5",
+        "dip": "ch5.fra"
+      },
+      "5825": {
+        "name": "FR-B Ch6",
+        "dip": "ch6.frb"
+      },
+      "5828": {
+        "name": "FR-D Ch6",
+        "dip": "ch6.frd"
+      },
+      "5840": {
+        "name": "FR-A Ch6",
+        "dip": "ch6.fra"
+      },
+      "5845": {
+        "name": "FR-B Ch7",
+        "dip": "ch7.frb"
+      },
+      "5847": {
+        "name": "FR-D Ch7",
+        "dip": "ch7.frd"
+      },
+      "5860": {
+        "name": "FR-A Ch7",
+        "dip": "ch7.fra"
+      },
       "5866": {
-        "name": "FR-B Ch8",
-        "dip": "ch8.frb"
+        "name": "FR-D Ch8",
+        "dip": "ch8.frd"
       },
       "5880": {
-        "name": "FR-F Ch8",
-        "dip": "ch8.frf"
+        "name": "FR-A Ch8",
+        "dip": "ch8.fra"
       },
       "5885": {
-        "name": "FR-E Ch5",
-        "dip": "ch5.fre"
+        "name": "FR-C Ch5",
+        "dip": "ch5.frc"
       },
       "5905": {
-        "name": "FR-E Ch6",
-        "dip": "ch6.fre"
+        "name": "FR-C Ch6",
+        "dip": "ch6.frc"
       },
       "5925": {
-        "name": "FR-E Ch7",
-        "dip": "ch7.fre"
+        "name": "FR-C Ch7",
+        "dip": "ch7.frc"
       },
       "5945": {
-        "name": "FR-E Ch8",
-        "dip": "ch8.fre"
+        "name": "FR-C Ch8",
+        "dip": "ch8.frc"
       }
     }
   },
@@ -1675,3 +1671,4 @@
     }
   }
 ]
+        
