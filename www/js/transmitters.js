@@ -251,8 +251,8 @@ var TS5823 = new Transmitter("TS5823/5828", "ts5823");
 
 TS5823.addDip('fra', '00');
 TS5823.addDip('frb', '11');
-TS5823.addDip('fre', '10');
-TS5823.addDip('frf', '01');
+TS5823.addDip('frc', '10');
+TS5823.addDip('frd', '01');
 
 TS5823.addDip('ch1', '111');
 TS5823.addDip('ch2', '110');

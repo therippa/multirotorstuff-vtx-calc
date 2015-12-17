@@ -11,6 +11,7 @@
 /Users/jbaker/projects/mrs_vtx/platforms/android/res/drawable-mdpi/ic_action_next_item.png \
 /Users/jbaker/projects/mrs_vtx/platforms/android/res/drawable-mdpi/ic_action_previous_item.png \
 /Users/jbaker/projects/mrs_vtx/platforms/android/res/drawable-mdpi/ic_action_remove.png \
+/Users/jbaker/projects/mrs_vtx/platforms/android/res/drawable-mdpi/icon.png \
 /Users/jbaker/projects/mrs_vtx/platforms/android/res/drawable-port-hdpi/screen.png \
 /Users/jbaker/projects/mrs_vtx/platforms/android/res/drawable-port-ldpi/screen.png \
 /Users/jbaker/projects/mrs_vtx/platforms/android/res/drawable-port-mdpi/screen.png \
@@ -36,6 +37,7 @@
 /Users/jbaker/projects/mrs_vtx/platforms/android/ant-build/res/drawable-mdpi/ic_action_next_item.png \
 /Users/jbaker/projects/mrs_vtx/platforms/android/ant-build/res/drawable-mdpi/ic_action_previous_item.png \
 /Users/jbaker/projects/mrs_vtx/platforms/android/ant-build/res/drawable-mdpi/ic_action_remove.png \
+/Users/jbaker/projects/mrs_vtx/platforms/android/ant-build/res/drawable-mdpi/icon.png \
 /Users/jbaker/projects/mrs_vtx/platforms/android/ant-build/res/drawable-port-hdpi/screen.png \
 /Users/jbaker/projects/mrs_vtx/platforms/android/ant-build/res/drawable-port-ldpi/screen.png \
 /Users/jbaker/projects/mrs_vtx/platforms/android/ant-build/res/drawable-port-mdpi/screen.png \
@@ -106,6 +108,7 @@
 /Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/js/ICanHaz.min.js \
 /Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/js/index.js \
 /Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/js/jquery-1.11.3.min.js \
+/Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/js/jquery.mobile-events.min.js \
 /Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/js/jquery.tap.min.js \
 /Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/js/transmitters.js \
 /Users/jbaker/projects/mrs_vtx/platforms/android/assets/www/js/vtx.js \

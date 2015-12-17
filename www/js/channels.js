@@ -77,6 +77,25 @@ $(document).ready(function() {
 
     };
 
+    var log = function(str) {
+        //$("#log").append(Date.now() + ": " + escapeHtml(JSON.stringify(str, null, 2)) + "<br>");
+    };
+
+    var entityMap = {
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': '&quot;',
+        "'": '&#39;',
+        "/": '&#x2F;'
+    };
+
+    function escapeHtml(string) {
+        return String(string).replace(/[&<>"'\/]/g, function (s) {
+            return entityMap[s];
+        });
+    }
+
     var arrayToExcludedTable = function() {
 
         var data = frequencies.slice(0); //clone array
@@ -94,14 +113,8 @@ $(document).ready(function() {
 
             var isEnabled = vtx_enabled[data[i]];
 
-            var switchData = $('<label class="switch switch--list-item"><input type="checkbox" data-freq="' + data[i] + '" class="switch__input" ' + (isEnabled ? "checked" : "") + '><div class="switch__toggle"></div></label>');
-            switchData.find("input").tap(function() {
-                var el = $(this);
-                var checked = el.prop("checked");
-                var freq = el.data("freq");
-                vtx_enabled[freq] = checked;
-                saveSettings();
-            });
+            var switchData = $('<label class="switch switch--list-item"><input type="checkbox" data-freq="' + data[i] + '" class="switch__input" ' +
+                (isEnabled ? "checked" : "") + '><div class="switch__toggle"></div></label>');
 
 
             var tr = ich.exclude_table_row({name: channelName, frequency: data[i]});
@@ -109,11 +122,23 @@ $(document).ready(function() {
             channel_table.append(tr);
             $(tr).find(".vtx-switch").append(switchData);
 
+            $(tr).find("input").on("tap", function(e) {
+
+                var el = $(e.target);
+                var checked = !el.prop("checked");
+                var freq = el.data("freq");
+                vtx_enabled[freq] = checked;
+                log(vtx_enabled);
+                saveSettings();
+            });
+
+
         }
 
     };
 
     function saveSettings() {
+        log("saved settings")
         window.localStorage.setItem(settings_key, JSON.stringify(vtx_enabled));
     }
 
@@ -162,7 +187,7 @@ $(document).ready(function() {
         Transmitters = {};
         $('#vtx_type').empty();
         $("#vtx-modal").show();
-        $.get('http://multirotorstuff-vtx.divshot.io/api/transmitters.json', function(data) {
+        $.get('https://blistering-torch-5648.firebaseapp.com/api/transmitters.json', function(data) {
         //$.get('http://localhost:8000/api/transmitters.json', function(data) {
             window.localStorage.setItem('transmitters', JSON.stringify(data));
             json_transmitters = data;
@@ -236,38 +261,38 @@ $(document).ready(function() {
             generateVtxTable();
         });
 
-        $("#settings-btn").tap(function () {
+        $("#settings-btn").on('tap', function () {
             $("#main").hide();
             $("#settings").show();
         });
 
-        $("#back-btn").tap(function () {
+        $("#back-btn").on('tap', function () {
             $("#main").show();
             generateVtxTable();
             $("#settings").hide();
         });
 
-        $("#aus-btn").tap(function () {
+        $("#aus-btn").on('tap', function () {
             toggleChannels([5645, 5658, 5665, 5695, 5685, 5705, 5885, 5905, 5917, 5925, 5945], false);
         });
 
-        $("#raceband-btn").tap(function () {
+        $("#raceband-btn").on('tap', function () {
             toggleChannels(race_bands, false);
         });
 
-        $("#vtx-btn").tap(function () {
+        $("#vtx-btn").on('tap', function () {
             getTransmitters();
         });
 
-        $("#boscam1-btn").tap(function () {
+        $("#boscam1-btn").on('tap', function () {
             toggleChannels([5945], false);
         });
 
-        $("#whats-new-btn").tap(function () {
+        $("#whats-new-btn").on('tap', function () {
             $("#whats-new-holder").hide();
         });
 
-        $("#reset-btn").tap(function () {
+        $("#reset-btn").on('tap', function () {
 
             for (var n in vtx_enabled) {
                 vtx_enabled[n] = true;

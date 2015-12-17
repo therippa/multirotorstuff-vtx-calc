@@ -1,0 +1,17 @@
+{
+  "firebase": "blistering-torch-5648",
+  "public": "www",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ],
+  "headers": [
+    {
+      "source": "/api/**",
+      "headers": [
+	{"key": "Access-Control-Allow-Origin", "value": "*"}
+	]
+    }
+  ]
+}
